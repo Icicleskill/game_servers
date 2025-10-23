@@ -3,7 +3,7 @@ services:
     image: ghcr.io/gethomepage/homepage:latest
     container_name: homepage
     networks:
-      - llamanet
+      - icenet
     #ports:
     #  - 3000:3000
     restart: unless-stopped
@@ -27,6 +27,6 @@ services:
 volumes:
   config:
 networks:
-  llamanet:
+  icenet:
     driver: bridge
-    name: llamanet
+    name: icenet

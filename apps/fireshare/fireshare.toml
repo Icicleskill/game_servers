@@ -1,8 +1,0 @@
-[[stack]]
-name = "fireshare"
-tags = ["media", "apps"]
-[stack.config]
-server = "media"
-linked_repo = "docker"
-webhook_enabled = false
-run_directory = "apps/fireshare"
