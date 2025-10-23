@@ -1,0 +1,14 @@
+[[stack]]
+name = "project_zomboid"
+tags = ["gs2", "games"]
+[stack.config]
+server = "gameserver2"
+linked_repo = "docker"
+webhook_enabled = false
+run_directory = "games/pzserver"
+post_deploy.command = """
+docker cp pzserver.ini pzserver:/data/.Zomboid/Server/
+docker exec pzserver chown 1000:1000 /data/.Zomboid/Server/pzserver.ini
+docker cp common.cfg pzserver:/data/config-lgsm/pzserver/
+docker exec pzserver chown 1000:1000 /data/config-lgsm/pzserver/common.cfg
+"""

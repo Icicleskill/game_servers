@@ -1,0 +1,8 @@
+[[stack]]
+name = "restreamer"
+tags = ["media", "apps"]
+[stack.config]
+server = "media"
+linked_repo = "docker"
+webhook_enabled = false
+run_directory = "apps/restreamer"

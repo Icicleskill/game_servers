@@ -1,0 +1,14 @@
+[[stack]]
+name = "rust"
+tags = ["gs2", "games"]
+[stack.config]
+server = "gameserver2"
+linked_repo = "docker"
+webhook_enabled = false
+run_directory = "games/rustserver"
+post_deploy.command = """
+docker cp rustserver.cfg rustserver:/data/serverfiles/server/rust/cfg/
+docker exec rustserver chown 1000:1000 /data/serverfiles/server/rust/cfg/rustserver.cfg
+docker cp common.cfg rustserver:/data/config-lgsm/rustserver/
+docker exec rustserver chown 1000:1000 /data/config-lgsm/rustserver/common.cfg
+"""

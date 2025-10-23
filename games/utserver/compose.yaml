@@ -1,0 +1,34 @@
+services:
+  lgsm:
+    image: gameservermanagers/gameserver:ut
+    restart: unless-stopped
+    networks:
+      llamamac:
+        ipv4_address: 192.168.50.XX
+    volumes:
+      - data:/data
+    container_name: utserver
+    labels:
+      - homepage.group=Games
+      - homepage.name=Unreal Tournament
+      - homepage.icon=https://raw.githubusercontent.com/GameServerManagers/LinuxGSM/refs/heads/master/lgsm/data/gameicons/ut-icon.png
+      - homepage.href=steam://connect/192.168.50.XX:7777
+      - homepage.widget.type=gamedig
+      - homepage.widget.serverType=unrealtournament
+      - homepage.widget.url=udp://192.168.50.XX:7778
+      - homepage.widget.fields=["status", "map", "currentPlayers", "ping"]
+      - homepage.container=utserver
+      - homepage.showStats=false
+volumes:
+  data:
+    name: utserver_data
+networks:
+  llamamac:
+    name: llamamac
+    driver: macvlan
+    driver_opts:
+      parent: enp6s18
+    ipam:
+      config:
+        - subnet: "192.168.50.0/23"
+          gateway: "192.168.50.1"

@@ -1,0 +1,53 @@
+services:
+  restreamer:
+    restart: always
+    container_name: restreamer
+    volumes:
+      - config:/core/config
+      - data:/core/data
+    networks:
+      - llamanet
+    #network_mode: host
+    #ports:
+      #- 8080:8080
+      #- 8181:8181
+      #- 1935:1935
+      #- 1936:1936
+      #- 6000:6000/udp
+    image: datarhei/restreamer:cuda-latest
+    labels:
+      # Proxy Resource Configuration
+      - pangolin.proxy-resources.restreamer.name=restreamer
+      - pangolin.proxy-resources.restreamer.full-domain=restreamer.at.lanallnight.com
+      - pangolin.proxy-resources.restreamer.protocol=http
+      - pangolin.proxy-resources.restreamer.targets[0].method=http
+      - pangolin.proxy-resources.restreamer.targets[0].hostname=restreamer
+      - pangolin.proxy-resources.restreamer.targets[0].port=8080
+      - pangolin.proxy-resources.restreamer-1935.name=restreamer-1935
+      - pangolin.proxy-resources.restreamer-1935.protocol=tcp
+      - pangolin.proxy-resources.restreamer-1935.proxy-port=1935
+      - pangolin.proxy-resources.restreamer-1935.targets[0].hostname=restreamer
+      - pangolin.proxy-resources.restreamer-1935.targets[0].port=1935
+      - pangolin.proxy-resources.restreamer-6000.name=restreamer-6000
+      - pangolin.proxy-resources.restreamer-6000.protocol=udp
+      - pangolin.proxy-resources.restreamer-6000.proxy-port=6000
+      - pangolin.proxy-resources.restreamer-6000.targets[0].hostname=restreamer
+      - pangolin.proxy-resources.restreamer-6000.targets[0].port=6000
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ['0']
+              capabilities:
+                - gpu
+                - compute
+                - video
+volumes:
+  data:
+  config:
+networks:
+  llamanet:
+    driver: bridge
+    name: llamanet
+    external: true

@@ -1,0 +1,10 @@
+- greeting:
+    text_size: 4xl
+    text: LAN All Night 12
+
+- datetime:
+    text_size: 4xl
+    format:
+      dateStyle: short
+      timeStyle: short
+      hour12: true

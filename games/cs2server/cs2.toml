@@ -1,0 +1,14 @@
+[[stack]]
+name = "counter_stike_2"
+tags = ["gs1", "games"]
+[stack.config]
+server = "gameserver1"
+linked_repo = "docker"
+webhook_enabled = false
+run_directory = "games/cs2server"
+post_deploy.command = """
+docker cp cs2server.cfg cs2server:/data/serverfiles/game/csgo/cfg/
+docker exec cs2server chown 1000:1000 /data/serverfiles/game/csgo/cfg/cs2server.cfg
+docker cp common.cfg cs2server:/data/config-lgsm/cs2server/
+docker exec cs2server chown 1000:1000 /data/config-lgsm/cs2server/common.cfg
+"""

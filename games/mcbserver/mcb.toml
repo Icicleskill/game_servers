@@ -1,0 +1,14 @@
+[[stack]]
+name = "minecraft_bedrock"
+tags = ["gs2", "games"]
+[stack.config]
+server = "gameserver2"
+linked_repo = "docker"
+webhook_enabled = false
+run_directory = "games/mcbserver"
+post_deploy.command = """
+docker cp server.properties mcbserver:/data/serverfiles/
+docker exec mcbserver chown 1000:1000 /data/serverfiles/server.properties
+docker cp common.cfg mcbserver:/data/config-lgsm/mcbserver/
+docker exec mcbserver chown 1000:1000 /data/config-lgsm/mcbserver/common.cfg
+"""

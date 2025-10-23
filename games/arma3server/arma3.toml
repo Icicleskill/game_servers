@@ -1,0 +1,16 @@
+[[stack]]
+name = "arma_3"
+tags = ["gs2", "games"]
+[stack.config]
+server = "gameserver2"
+linked_repo = "docker"
+webhook_enabled = false
+run_directory = "games/arma3server"
+post_deploy.command = """
+docker cp server.cfg arma3server:/data/serverfiles/cfg/
+docker exec arma3server chown 1000:1000 /data/serverfiles/cfg/server.cfg
+docker cp network.cfg arma3server:/data/serverfiles/cfg/
+docker exec arma3server chown 1000:1000 /data/serverfiles/cfg/network.cfg
+docker cp common.cfg arma3server:/data/config-lgsm/arma3server/
+docker exec arma3server chown 1000:1000 /data/config-lgsm/arma3server/common.cfg
+"""

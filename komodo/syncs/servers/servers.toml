@@ -1,0 +1,32 @@
+[[server]]
+name = "gameserver1"
+tags = ["gs1"]
+[server.config]
+address = "https://192.168.50.54:8120"
+enabled = true
+
+##
+
+[[server]]
+name = "gameserver2"
+tags = ["gs2"]
+[server.config]
+address = "https://192.168.50.55:8120"
+enabled = true
+
+##
+
+[[server]]
+name = "media"
+tags = ["media"]
+[server.config]
+address = "https://192.168.50.53:8120"
+enabled = true
+
+##
+
+[[server]]
+name = "mgmt"
+tags = ["mgmt"]
+[server.config]
+enabled = true

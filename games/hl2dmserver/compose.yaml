@@ -1,0 +1,34 @@
+services:
+  lgsm:
+    image: gameservermanagers/gameserver:hl2dm
+    restart: unless-stopped
+    networks:
+      llamamac:
+        ipv4_address: 192.168.50.64
+    volumes:
+      - data:/data
+    container_name: hl2dmserver
+    labels:
+      - homepage.group=Games
+      - homepage.name=Half Life 2 Deathmatch
+      - homepage.icon=https://raw.githubusercontent.com/GameServerManagers/LinuxGSM/refs/heads/master/lgsm/data/gameicons/hl2dm-icon.png
+      - homepage.href=steam://connect/192.168.50.64:27015
+      - homepage.widget.type=gamedig
+      - homepage.widget.serverType=hl2d
+      - homepage.widget.url=udp://192.168.50.64:27015
+      - homepage.widget.fields=["status", "map", "currentPlayers", "ping"]
+      - homepage.container=hl2dmserver
+      - homepage.showStats=false
+volumes:
+  data:
+    name: hl2dmserver_data
+networks:
+  llamamac:
+    name: llamamac
+    driver: macvlan
+    driver_opts:
+      parent: enp6s18
+    ipam:
+      config:
+        - subnet: "192.168.50.0/23"
+          gateway: "192.168.50.1"

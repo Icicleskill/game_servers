@@ -1,0 +1,14 @@
+[[stack]]
+name = "counter_strike_16"
+tags = ["gs1", "games"]
+[stack.config]
+server = "gameserver1"
+linked_repo = "docker"
+webhook_enabled = false
+run_directory = "games/csserver"
+post_deploy.command = """
+docker cp csserver.cfg csserver:/data/serverfiles/cstrike/
+docker exec csserver chown 1000:1000 /data/serverfiles/cstrike/csserver.cfg
+docker cp common.cfg csserver:/data/config-lgsm/csserver/
+docker exec csserver chown 1000:1000 /data/config-lgsm/csserver/common.cfg
+"""

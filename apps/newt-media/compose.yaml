@@ -1,0 +1,18 @@
+services:
+  newt:
+    image: fosrl/newt
+    container_name: newt
+    restart: unless-stopped
+    environment:
+      - PANGOLIN_ENDPOINT=https://pangolin.at.lanallnight.com
+      - NEWT_ID=mg8ynrdgq3bo9o4
+      - NEWT_SECRET=19o3azbqfjsnpgw6rmx6lbd88bn1q0bnma39rg749hwnhbpc
+      - DOCKER_SOCKET=unix:///var/run/docker.sock
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - llamanet
+networks:
+  llamanet:
+    driver: bridge
+    name: llamanet

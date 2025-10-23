@@ -1,0 +1,34 @@
+services:
+  lgsm:
+    image: gameservermanagers/gameserver:bf1942
+    container_name: bf1942server
+    restart: unless-stopped
+    networks:
+      llamamac:
+        ipv4_address: 192.168.50.72
+    volumes:
+      - data:/data
+    labels:
+      - homepage.group=Games
+      - homepage.name=Battlefield 1942
+      - homepage.icon=https://raw.githubusercontent.com/GameServerManagers/LinuxGSM/refs/heads/master/lgsm/data/gameicons/bf1942-icon.png
+      - homepage.href=steam://connect/192.168.50.72:14567
+      - homepage.widget.type=gamedig
+      - homepage.widget.serverType=battlefield1942
+      - homepage.widget.url=udp://192.168.50.72:23000
+      - homepage.widget.fields=["status", "map", "currentPlayers", "ping"]
+      - homepage.container=bf1942server
+      - homepage.showStats=false
+volumes:
+  data:
+    name: bf1942server_data
+networks:
+  llamamac:
+    name: llamamac
+    driver: macvlan
+    driver_opts:
+      parent: enp6s18
+    ipam:
+      config:
+        - subnet: "192.168.50.0/23"
+          gateway: "192.168.50.1"

@@ -1,0 +1,20 @@
+[[stack]]
+name = "quake_live"
+tags = ["gs2", "games"]
+[stack.config]
+server = "gameserver2"
+linked_repo = "docker"
+webhook_enabled = false
+run_directory = "games/qlserver"
+post_deploy.command = """
+docker cp qlserver.cfg qlserver:/data/serverfiles/baseq3/
+docker exec qlserver chown 1000:1000 /data/serverfiles/baseq3/qlserver.cfg
+docker cp access.txt qlserver:/data/serverfiles/baseq3/
+docker exec qlserver chown 1000:1000 /data/serverfiles/baseq3/access.txt
+docker cp mappool.txt qlserver:/data/serverfiles/baseq3/
+docker exec qlserver chown 1000:1000 /data/serverfiles/baseq3/mappool.txt
+docker cp workshop.txt qlserver:/data/serverfiles/baseq3/
+docker exec qlserver chown 1000:1000 /data/serverfiles/baseq3/workshop.txt
+docker cp common.cfg qlserver:/data/config-lgsm/qlserver/
+docker exec qlserver chown 1000:1000 /data/config-lgsm/qlserver/common.cfg
+"""

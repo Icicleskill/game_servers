@@ -1,0 +1,14 @@
+[[stack]]
+name = "enemy_territory_legacy"
+tags = ["gs1", "games"]
+[stack.config]
+server = "gameserver1"
+linked_repo = "docker"
+webhook_enabled = false
+run_directory = "games/etlserver"
+post_deploy.command = """
+docker cp etlserver.cfg etlserver:/data/serverfiles/etmain/
+docker exec etlserver chown 1000:1000 /data/serverfiles/etmain/etlserver.cfg
+docker cp common.cfg etlserver:/data/config-lgsm/etlserver/
+docker exec etlserver chown 1000:1000 /data/config-lgsm/etlserver/common.cfg
+"""

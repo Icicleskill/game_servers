@@ -1,0 +1,14 @@
+[[stack]]
+name = "palworld"
+tags = ["gs2", "games"]
+[stack.config]
+server = "gameserver2"
+linked_repo = "docker"
+webhook_enabled = false
+run_directory = "games/pwserver"
+post_deploy.command = """
+docker cp PalWorldSettings.ini pwserver:/data/serverfiles/Pal/Saved/Config/LinuxServer/
+docker exec pwserver chown 1000:1000 /data/serverfiles/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini
+docker cp common.cfg pwserver:/data/config-lgsm/pwserver/
+docker exec pwserver chown 1000:1000 /data/config-lgsm/pwserver/common.cfg
+"""

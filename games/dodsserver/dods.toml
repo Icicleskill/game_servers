@@ -1,0 +1,14 @@
+[[stack]]
+name = "day_of_defeat_source"
+tags = ["gs1", "games"]
+[stack.config]
+server = "gameserver1"
+linked_repo = "docker"
+webhook_enabled = false
+run_directory = "games/dodsserver"
+post_deploy.command = """
+docker cp dodsserver.cfg dodsserver:/data/serverfiles/dod/cfg/
+docker exec dodsserver chown 1000:1000 /data/serverfiles/dod/cfg/dodsserver.cfg
+docker cp common.cfg dodsserver:/data/config-lgsm/dodsserver/
+docker exec dodsserver chown 1000:1000 /data/config-lgsm/dodsserver/common.cfg
+"""

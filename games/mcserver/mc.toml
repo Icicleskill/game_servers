@@ -1,0 +1,14 @@
+[[stack]]
+name = "minecraft_java"
+tags = ["gs1", "games"]
+[stack.config]
+server = "gameserver1"
+linked_repo = "docker"
+webhook_enabled = false
+run_directory = "games/mcserver"
+post_deploy.command = """
+docker cp server.properties mcserver:/data/serverfiles/
+docker exec mcserver chown 1000:1000 /data/serverfiles/server.properties
+docker cp common.cfg mcserver:/data/config-lgsm/mcserver/
+docker exec mcserver chown 1000:1000 /data/config-lgsm/mcserver/common.cfg
+"""

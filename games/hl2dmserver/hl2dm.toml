@@ -1,0 +1,14 @@
+[[stack]]
+name = "half_life_2_deathmatch"
+tags = ["gs1", "games"]
+[stack.config]
+server = "gameserver1"
+linked_repo = "docker"
+webhook_enabled = false
+run_directory = "games/hl2dmserver"
+post_deploy.command = """
+docker cp hl2dmserver.cfg hl2dmserver:/data/serverfiles/hl2mp/cfg/
+docker exec hl2dmserver chown 1000:1000 /data/serverfiles/hl2mp/cfg/hl2dmserver.cfg
+docker cp common.cfg hl2dmserver:/data/config-lgsm/hl2dmserver/
+docker exec hl2dmserver chown 1000:1000 /data/config-lgsm/hl2dmserver/common.cfg
+"""

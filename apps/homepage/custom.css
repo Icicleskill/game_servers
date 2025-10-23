@@ -1,0 +1,11 @@
+#information-widgets {
+background-color: rgba(0, 0, 0, 0.75) !important;
+}
+
+#tabs ul {
+background-color: rgba(0, 0, 0, 0.75) !important;
+}
+
+.service-card, .bookmark-icon, .bookmark-text {
+background-color: rgba(0, 0, 0, 0.75) !important;
+}

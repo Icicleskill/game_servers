@@ -1,0 +1,34 @@
+services:
+  lgsm:
+    image: gameservermanagers/gameserver:l4d2
+    restart: unless-stopped
+    networks:
+      llamamac:
+        ipv4_address: 192.168.50.65
+    volumes:
+      - data:/data
+    container_name: l4d2server
+    labels:
+      - homepage.group=Games
+      - homepage.name=Left 4 Dead 2
+      - homepage.icon=https://raw.githubusercontent.com/GameServerManagers/LinuxGSM/refs/heads/master/lgsm/data/gameicons/l4d2-icon.png
+      - homepage.href=steam://connect/192.168.50.65:27015
+      - homepage.widget.type=gamedig
+      - homepage.widget.serverType=l4d2
+      - homepage.widget.url=udp://192.168.50.65:27015
+      - homepage.widget.fields=["status", "map", "currentPlayers", "ping"]
+      - homepage.container=l4d2server
+      - homepage.showStats=false
+volumes:
+  data:
+    name: l4d2server_data
+networks:
+  llamamac:
+    name: llamamac
+    driver: macvlan
+    driver_opts:
+      parent: enp6s18
+    ipam:
+      config:
+        - subnet: "192.168.50.0/23"
+          gateway: "192.168.50.1"

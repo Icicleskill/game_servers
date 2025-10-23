@@ -1,0 +1,8 @@
+[[stack]]
+name = "teamspeak6"
+tags = ["mgmt", "apps"]
+[stack.config]
+server = "mgmt"
+linked_repo = "docker"
+webhook_enabled = false
+run_directory = "apps/teamspeak6"

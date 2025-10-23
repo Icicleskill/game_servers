@@ -1,0 +1,16 @@
+[[stack]]
+name = "unreal_tournament_3"
+tags = ["gs2", "games"]
+[stack.config]
+server = "gameserver2"
+linked_repo = "docker"
+webhook_enabled = false
+run_directory = "games/ut3server"
+post_deploy.command = """
+docker cp UTGame.ini ut3server:/data/serverfiles/UTGame/Config/ut3server/
+docker exec ut3server chown 1000:1000 /data/serverfiles/UTGame/Config/ut3server/UTGame.ini
+docker cp UTWeb.ini ut3server:/data/serverfiles/UTGame/Config/ut3server/
+docker exec ut3server chown 1000:1000 /data/serverfiles/UTGame/Config/ut3server/UTWeb.ini
+docker cp common.cfg ut3server:/data/config-lgsm/ut3server/
+docker exec ut3server chown 1000:1000 /data/config-lgsm/ut3server/common.cfg
+"""

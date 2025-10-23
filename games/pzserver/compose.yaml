@@ -1,0 +1,34 @@
+services:
+  lgsm:
+    image: gameservermanagers/gameserver:pz
+    restart: unless-stopped
+    networks:
+      llamamac:
+        ipv4_address: 192.168.50.XX
+    volumes:
+      - data:/data
+    container_name: pzserver
+    labels:
+      - homepage.group=Games
+      - homepage.name=Project Zomboid
+      - homepage.icon=https://raw.githubusercontent.com/GameServerManagers/LinuxGSM/refs/heads/master/lgsm/data/gameicons/pz-icon.png
+      - homepage.href=steam://connect/192.168.50.XX:16261
+      - homepage.widget.type=gamedig
+      - homepage.widget.serverType=projectzomboid
+      - homepage.widget.url=udp://192.168.50.XX:16261
+      - homepage.widget.fields=["status", "map", "currentPlayers", "ping"]
+      - homepage.container=pzserver
+      - homepage.showStats=false
+volumes:
+  data:
+    name: pzserver_data
+networks:
+  llamamac:
+    name: llamamac
+    driver: macvlan
+    driver_opts:
+      parent: enp6s18
+    ipam:
+      config:
+        - subnet: "192.168.50.0/23"
+          gateway: "192.168.50.1"

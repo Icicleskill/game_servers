@@ -1,0 +1,14 @@
+[[stack]]
+name = "call_of_duty_4_mw"
+tags = ["gs1", "games"]
+[stack.config]
+server = "gameserver1"
+linked_repo = "docker"
+webhook_enabled = false
+run_directory = "games/cod4server"
+post_deploy.command = """
+docker cp cod4server.cfg cod4server:/data/serverfiles/main/
+docker exec cod4server chown 1000:1000 /data/serverfiles/main/cod4server.cfg
+docker cp common.cfg cod4server:/data/config-lgsm/cod4server/
+docker exec cod4server chown 1000:1000 /data/config-lgsm/cod4server/common.cfg
+"""

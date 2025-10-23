@@ -1,0 +1,14 @@
+[[stack]]
+name = "unreal_tournament_2004"
+tags = ["gs2", "games"]
+[stack.config]
+server = "gameserver2"
+linked_repo = "docker"
+webhook_enabled = false
+run_directory = "games/ut2k4server"
+post_deploy.command = """
+docker cp ut2k4server.ini ut2k4server:/data/serverfiles/System/
+docker exec ut2k4server chown 1000:1000 /data/serverfiles/System/ut2k4server.ini
+docker cp common.cfg ut2k4server:/data/config-lgsm/ut2k4server/
+docker exec ut2k4server chown 1000:1000 /data/config-lgsm/ut2k4server/common.cfg
+"""

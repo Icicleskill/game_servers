@@ -1,0 +1,8 @@
+[[stack]]
+name = "dockerproxy-gs1"
+tags = ["gs1", "services"]
+[stack.config]
+server = "gameserver1"
+linked_repo = "docker"
+webhook_enabled = false
+run_directory = "apps/dockerproxy-gs1"

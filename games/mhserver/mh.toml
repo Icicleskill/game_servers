@@ -1,0 +1,14 @@
+[[stack]]
+name = "mordhau"
+tags = ["gs2", "games"]
+[stack.config]
+server = "gameserver2"
+linked_repo = "docker"
+webhook_enabled = false
+run_directory = "games/mhserver"
+post_deploy.command = """
+docker cp Game.ini mhserver:/data/serverfiles/Mordhau/Saved/Config/Linuxserver/
+docker exec mhserver chown 1000:1000 /data/serverfiles/Mordhau/Saved/Config/Linuxserver/Game.ini
+docker cp common.cfg mhserver:/data/config-lgsm/mhserver/
+docker exec mhserver chown 1000:1000 /data/config-lgsm/mhserver/common.cfg
+"""

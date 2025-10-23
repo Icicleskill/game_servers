@@ -1,0 +1,7 @@
+[[repo]]
+name = "docker"
+[repo.config]
+server = "mgmt"
+git_account = "icicleskill" #anyone who can get a token for this repo
+repo = "lanallnight/docker"
+webhook_enabled = false

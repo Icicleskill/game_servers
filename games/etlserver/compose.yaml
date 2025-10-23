@@ -1,0 +1,34 @@
+services:
+  lgsm:
+    image: gameservermanagers/gameserver:etl
+    restart: unless-stopped
+    networks:
+      llamamac:
+        ipv4_address: 192.168.50.58
+    volumes:
+      - data:/data
+    container_name: etlserver
+    labels:
+      - homepage.group=Games
+      - homepage.name=Enemy Territory Legacy
+      - homepage.icon=https://raw.githubusercontent.com/GameServerManagers/LinuxGSM/refs/heads/master/lgsm/data/gameicons/etl-icon.png
+      - homepage.href=steam://connect/192.168.50.58:27960
+      - homepage.widget.type=gamedig
+      - homepage.widget.serverType=rtcw
+      - homepage.widget.url=udp://192.168.50.58:27960
+      - homepage.widget.fields=["status", "map", "currentPlayers", "ping"]
+      - homepage.container=etlserver
+      - homepage.showStats=false
+volumes:
+  data:
+    name: etlserver_data
+networks:
+  llamamac:
+    name: llamamac
+    driver: macvlan
+    driver_opts:
+      parent: enp6s18
+    ipam:
+      config:
+        - subnet: "192.168.50.0/23"
+          gateway: "192.168.50.1"
