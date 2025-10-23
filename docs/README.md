@@ -1,30 +1,3 @@
-# LAN All Night Docker 
-
-* [Komodo Setup](guides/komodo_setup.md)
-* [Deplyment/Creation](guides/docker_deployment.md)
-* [Network Setup](guides/network_setup.md)
-
-### SERVERS
-| IP | DESC |
-|----|------|
-|.52| DOCKER - Management|
-|.53| DOCKER - Media|
-|.54| DOCKER - Game Server 1|
-|.55| DOCKER - Game Server 2|
-
-### SERVICES
-| name | link | resolves |
-|----|----|------|
-| [Pangolin](./apps/pangolin.md) | https://pangolin.at.lanallnight.com | 192.168.50.52 |
-| [Lanager](./apps/lanager.md) | https://intranet.at.lanallnight.com | pangolin |
-| [Homepage](./apps/homepage.md) | https://servers.at.lanallnight.com | pangolin |
-| [Restreamer](./apps/restreamer.md) | https://restreamer.at.lanallnight.com | pangolin |
-| [Fireshare](./apps/fireshare.md) | https://clips.at.lanallnight.com | pangolin |
-| [Komodo](./apps/komodo.md) | https://komodo.at.lanallnight.com | pangolin |
-| [Technitium](./apps/technitium.md) | http://dns.at.lanallnight.com | 192.168.50.20 |
-| Lancache | http://lancache.at.lanallnight.com | 192.168.50.2 |
-| Check-In | https://checkin.at.lanallnight.com | 192.168.50.19 |
-
 ### Game Servers
 | IP | SERVER |
 | ------ | ----- |
