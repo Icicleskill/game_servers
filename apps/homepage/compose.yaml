@@ -1,7 +1,7 @@
 services:
   homepage:
     image: ghcr.io/gethomepage/homepage:latest
-    container_name: homepage
+    container_name: serverlist
     networks:
       - icenet
     #ports:
@@ -15,14 +15,14 @@ services:
       - ./widgets.yaml:/app/config/widgets.yaml
       - ./custom.css:/app/config/custom.css
     environment:
-      - HOMEPAGE_ALLOWED_HOSTS=192.168.50.52:3000,servers.at.lanallnight.com
+      - HOMEPAGE_ALLOWED_HOSTS=10.42.0.3:3000,icicleskill.win
     labels:
       # Proxy Resource Configuration
       - pangolin.proxy-resources.servers.name=servers
-      - pangolin.proxy-resources.servers.full-domain=servers.at.lanallnight.com
+      - pangolin.proxy-resources.servers.full-domain=icicleskill.win
       - pangolin.proxy-resources.servers.protocol=http
       - pangolin.proxy-resources.servers.targets[0].method=http
-      - pangolin.proxy-resources.servers.targets[0].hostname=homepage
+      - pangolin.proxy-resources.servers.targets[0].hostname=serverlist
       - pangolin.proxy-resources.servers.targets[0].port=3000
 volumes:
   config:

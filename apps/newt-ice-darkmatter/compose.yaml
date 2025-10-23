@@ -9,6 +9,9 @@ services:
       - PANGOLIN_ENDPOINT=https://darvaza.ckrl.cloud
       - NEWT_ID=y6isp821nze17va
       - NEWT_SECRET=kitr6cuskrza4jyi2tbjcru7slm45sdzro7uhi566jf34ps0
+      - DOCKER_SOCKET=unix:///var/run/docker.sock
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
 networks:
   icenet:
     driver: bridge
