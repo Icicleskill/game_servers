@@ -1,0 +1,40 @@
+services:
+  t6zm-1:
+    image: ghcr.io/ayymoss/plutainer:latest
+    container_name: t6zm-1
+    hostname: t6zm-1
+    restart: unless-stopped
+    networks:
+      - icenet
+    ports:
+      - "4976:4976/udp"
+    volumes:
+      - /opt/GameFiles/T6ServerFiles:/home/plutainer/gamefiles:ro
+      - ./t6zm-1:/home/plutainer/app
+    environment:
+      - PLUTO_PORT=4976
+      - PLUTO_SERVER_KEY=${T6ZM_PLUTO_SERVER_KEY}
+      - PLUTO_CONFIG_FILE=dedicated_zm.cfg
+      - PLUTO_GAME=t6zm
+
+  t6mp-1:
+    image: ghcr.io/ayymoss/plutainer:latest
+    container_name: t6mp-1
+    hostname: t6mp-1
+    restart: unless-stopped
+    networks:
+      - icenet
+    ports:
+      - "4977:4977/udp"
+    volumes:
+      - /opt/GameFiles/T6ServerFiles:/home/plutainer/gamefiles:ro
+      - ./t6mp-1:/home/plutainer/app
+    environment:
+      - PLUTO_PORT=4977
+      - PLUTO_SERVER_KEY=${T6MP_PLUTO_SERVER_KEY}
+      - PLUTO_CONFIG_FILE=dedicated.cfg
+      - PLUTO_GAME=t6mp
+networks:
+  icenet:
+    driver: bridge
+    name: icenet

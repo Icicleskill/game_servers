@@ -1,0 +1,39 @@
+services:
+  t4sp-1:
+    image: ghcr.io/ayymoss/plutainer:latest
+    container_name: t4sp-1
+    hostname: t4sp-1
+    restart: unless-stopped
+    networks:
+      - icenet
+    ports:
+      - "28960:28960/udp"
+    volumes:
+      - /opt/GameFiles/T4ServerFiles:/home/plutainer/gamefiles:ro
+      - ./t4sp-1:/home/plutainer/app
+    environment:
+      - PLUTO_PORT=28960
+      - PLUTO_SERVER_KEY=${T4SP_PLUTO_SERVER_KEY}
+      - PLUTO_CONFIG_FILE=server_zm.cfg
+      - PLUTO_GAME=t4sp
+  t4mp-1:
+    image: ghcr.io/ayymoss/plutainer:latest
+    container_name: t4mp-1
+    hostname: t4mp-1
+    restart: unless-stopped
+    networks:
+      - icenet
+    ports:
+      - "28961:28961/udp"
+    volumes:
+      - /opt/GameFiles/T4ServerFiles:/home/plutainer/gamefiles:ro
+      - ./t4mp-1:/home/plutainer/app
+    environment:
+      - PLUTO_PORT=28961
+      - PLUTO_SERVER_KEY=${T4MP_PLUTO_SERVER_KEY}
+      - PLUTO_CONFIG_FILE=server.cfg
+      - PLUTO_GAME=t4mp
+networks:
+  icenet:
+    driver: bridge
+    name: icenet

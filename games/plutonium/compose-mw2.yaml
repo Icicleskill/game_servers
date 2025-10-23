@@ -1,0 +1,22 @@
+services:
+  iw4xmp-1:
+    image: ghcr.io/ayymoss/plutainer:latest
+    container_name: iw4xmp-1
+    restart: unless-stopped
+    networks:
+      - icenet
+    ports:
+      - "28970:28970/udp"
+      #- "28970:28970/tcp" # TCP is needed for modlist metadata (not required if not hosting mods)
+    volumes:
+      - /opt/GameFiles/IW4xServerFiles:/home/plutainer/gamefiles
+      - ./iw4xmp-1:/home/plutainer/app
+    environment:
+      - IW4X_PORT=28970
+      - IW4X_CONFIG_FILE=server.cfg
+      - IW4X_GAME=iw4x
+      - IW4X_AUTO_UPDATE=false
+networks:
+  icenet:
+    driver: bridge
+    name: icenet

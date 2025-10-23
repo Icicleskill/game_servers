@@ -1,0 +1,46 @@
+services:
+  iw4madmin:
+    image: ghcr.io/raidmax/iw4madmin:latest
+    container_name: iw4madmin
+    restart: unless-stopped
+    networks:
+      - icenet
+    ports:
+      - "1624:1624"
+      #- You need to expose any IW4X_NET_LOG_IP ports.
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - ./IW4MAdmin/Configuration:/app/Configuration
+      - ./IW4MAdmin/Plugins:/app/Plugins
+      - ./IW4MAdmin/Localization:/app/Localization
+      - ./IW4MAdmin/Database:/app/Database
+      - ./IW4MAdmin/Log:/app/Log
+      - ./iw4xmp-1/gamefiles/userraw/logs/games_mp.log:/app/gamelogs/iw4xmp-1/gamefiles/userraw/logs/games_mp.log:ro
+      - ./t4mp-1/plutonium/storage/t4/main/games_mp.log:/app/gamelogs/t4mp-1/plutonium/storage/t4/main/games_mp.log:ro
+      - ./t4sp-1/plutonium/storage/t4/main/games_zm.log:/app/gamelogs/t4sp-1/plutonium/storage/t4/main/games_zm.log:ro
+      - ./t5mp-1/plutonium/storage/t5/main/logs/games_mp.log:/app/gamelogs/t5mp-1/plutonium/storage/t5/main/logs/games_mp.log:ro
+      - ./t5sp-1/plutonium/storage/t5/mods/Stairway_to_hell_bo1/logs/games_zm.log:/app/gamelogs/t5sp-1/plutonium/storage/t5/mods/Stairway_to_hell_bo1/logs/games_zm.log:ro
+      - ./t6mp-1/plutonium/storage/t6/main/logs/games_mp.log:/app/gamelogs/t6mp-1/plutonium/storage/t6/main/logs/games_mp.log:ro
+      - ./t6zm-1/plutonium/storage/t6/main/logs/games_zm.log:/app/gamelogs/t6zm-1/plutonium/storage/t6/main/logs/games_zm.log:ro
+    depends_on:
+      iw4xmp-1:
+        condition: service_healthy
+      t6zm-1:
+        condition: service_healthy
+      t6mp-1:
+        condition: service_healthy
+      t4sp-1:
+        condition: service_healthy
+      t4mp-1:
+        condition: service_healthy
+      t5mp-1:
+        condition: service_healthy
+      t5sp-1:
+        condition: service_healthy
+networks:
+  icenet:
+    driver: bridge
+    name: icenet
