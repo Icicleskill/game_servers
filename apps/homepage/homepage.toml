@@ -5,4 +5,4 @@ tags = ["ice", "apps"]
 server = "darkmatter"
 linked_repo = "game_servers"
 webhook_enabled = false
-run_directory = "apps/homepage"
+run_directory = "apps/serverlist"
