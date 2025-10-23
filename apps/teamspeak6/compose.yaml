@@ -1,0 +1,43 @@
+services:
+  teamspeak:
+    image: teamspeaksystems/teamspeak6-server:latest
+    container_name: ts6
+    hostname: ts6
+    restart: unless-stopped
+    networks:
+      - icenet
+    #ports:
+    #  - "9987:9987/udp"   # Voice Port
+    #  - "30033:30033/tcp" # File Transfer
+    #  - "10080:10080/tcp" # Web Query
+    environment:
+      - TSSERVER_LICENSE_ACCEPTED=accept
+      - TSSERVER_DEFAULT_PORT=9987
+      - TSSERVER_FILE_TRANSFER_PORT=30033
+      - TSSERVER_QUERY_HTTP_PORT=10080
+    volumes:
+      - teamspeak-data:/var/tsserver
+    labels:
+      # Proxy Resource Configuration
+      - pangolin.proxy-resources.ts6-9987.name=ts6-9987
+      - pangolin.proxy-resources.ts6-9987.protocol=udp
+      - pangolin.proxy-resources.ts6-9987.proxy-port=9987
+      - pangolin.proxy-resources.ts6-9987.targets[0].hostname=ts6
+      - pangolin.proxy-resources.ts6-9987.targets[0].port=9987
+      - pangolin.proxy-resources.ts6-10080.name=ts6-10080
+      - pangolin.proxy-resources.ts6-10080.protocol=tcp
+      - pangolin.proxy-resources.ts6-10080.proxy-port=10080
+      - pangolin.proxy-resources.ts6-10080.targets[0].hostname=ts6
+      - pangolin.proxy-resources.ts6-10080.targets[0].port=10080
+      - pangolin.proxy-resources.ts6-30033.name=ts6-30033
+      - pangolin.proxy-resources.ts6-30033.protocol=tcp
+      - pangolin.proxy-resources.ts6-30033.proxy-port=30033
+      - pangolin.proxy-resources.ts6-30033.targets[0].hostname=ts6
+      - pangolin.proxy-resources.ts6-30033.targets[0].port=30033
+volumes:
+  teamspeak-data:
+    name: teamspeak-data
+networks:
+  icenet:
+    driver: bridge
+    name: icenet
