@@ -17,7 +17,6 @@ services:
       - PLUTO_CONFIG_FILE=dedicated.cfg
       - PLUTO_GAME=t5mp
       - PLUTO_MAX_CLIENTS=18
-  
   t5sp-1:
     image: ghcr.io/ayymoss/plutainer:latest
     container_name: t5sp-1

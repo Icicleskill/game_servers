@@ -16,7 +16,6 @@ services:
       - PLUTO_SERVER_KEY=${T6ZM_PLUTO_SERVER_KEY}
       - PLUTO_CONFIG_FILE=dedicated_zm.cfg
       - PLUTO_GAME=t6zm
-
   t6mp-1:
     image: ghcr.io/ayymoss/plutainer:latest
     container_name: t6mp-1
