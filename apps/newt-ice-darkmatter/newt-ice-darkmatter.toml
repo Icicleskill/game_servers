@@ -1,0 +1,8 @@
+[[stack]]
+name = "newt-ice-darkmatter"
+tags = ["ice", "games"]
+[stack.config]
+server = "darkmatter"
+linked_repo = "game_servers"
+webhook_enabled = false
+run_directory = "apps/newt-ice-darkmatter"
