@@ -10,15 +10,15 @@
     "rcon": {
         "address": "0.0.0.0",
         "port": 19999,
-        "password": "dontpetthellama",
+        "password": "danglethepoon",
         "permission": "monitor",
         "blacklist": [],
         "whitelist": []
     },
     "game": {
-        "name": "LANALLNIGHT-ARMAR",
+        "name": "ICEWIN - Arma Reforger",
         "password": "",
-        "passwordAdmin": "dontpetthellama",
+        "passwordAdmin": "danglethepoon",
         "admins" : [],
         "scenarioId": "{ECC61978EDCC2B5A}Missions/23_Campaign.conf",
         "maxPlayers": 64,

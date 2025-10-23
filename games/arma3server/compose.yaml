@@ -4,18 +4,17 @@ services:
     container_name: arma3server
     restart: unless-stopped
     networks:
-      llamamac:
-        ipv4_address: 192.168.50.XX
+      - icenet
     volumes:
       - data:/data
     labels:
       - homepage.group=Games
       - homepage.name=Arma 3
       - homepage.icon=https://raw.githubusercontent.com/GameServerManagers/LinuxGSM/refs/heads/master/lgsm/data/gameicons/arma3-icon.png
-      - homepage.href=steam://connect/192.168.50.XX:2302
+      - homepage.href=steam://connect/arma3.icicleskill.win:2302
       - homepage.widget.type=gamedig
       - homepage.widget.serverType=arma3
-      - homepage.widget.url=udp://192.168.50.XX:2302
+      - homepage.widget.url=udp://arma3server:2302
       - homepage.widget.fields=["status", "map", "currentPlayers", "ping"]
       - homepage.container=arma3server
       - homepage.showStats=false
@@ -23,12 +22,6 @@ volumes:
   data:
     name: arma3server_data
 networks:
-  llamamac:
-    name: llamamac
-    driver: macvlan
-    driver_opts:
-      parent: enp6s18
-    ipam:
-      config:
-        - subnet: "192.168.50.0/23"
-          gateway: "192.168.50.1"
+  icenet:
+    driver: bridge
+    name: icenet
