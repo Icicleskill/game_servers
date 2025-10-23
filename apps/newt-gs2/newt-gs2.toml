@@ -1,8 +1,0 @@
-[[stack]]
-name = "newt-gs2"
-tags = ["gs2", "services"]
-[stack.config]
-server = "gameserver2"
-linked_repo = "docker"
-webhook_enabled = false
-run_directory = "apps/newt-gs2"

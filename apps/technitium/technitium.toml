@@ -1,8 +1,0 @@
-[[stack]]
-name = "technitium"
-tags = ["mgmt", "services"]
-[stack.config]
-server = "mgmt"
-linked_repo = "docker"
-webhook_enabled = false
-run_directory = "apps/technitium"

@@ -1,8 +1,0 @@
-[[stack]]
-name = "newt-media"
-tags = ["mgmt", "services"]
-[stack.config]
-server = "media"
-linked_repo = "docker"
-webhook_enabled = false
-run_directory = "apps/newt-media"
