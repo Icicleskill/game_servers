@@ -1,0 +1,15 @@
+[[stack]]
+name = "black_ops2"
+tags = ["ice", "games"]
+[stack.config]
+server = "darkmatter"
+linked_repo = "docker"
+webhook_enabled = false
+run_directory = "games/plutonium"
+file_paths = ["compose-bo2.yaml"]
+post_deploy.command = """
+docker cp armarserver_config.json armarserver:/data/serverfiles/
+docker exec armarserver chown 1000:1000 /data/serverfiles/armarserver_config.json
+docker cp common.cfg armarserver:/data/config-lgsm/armarserver/
+docker exec armarserver chown 1000:1000 /data/config-lgsm/armarserver/common.cfg
+"""
