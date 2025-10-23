@@ -1,8 +1,8 @@
 [[stack]]
-name = "homepage"
-tags = ["mgmt", "apps"]
+name = "serverlist"
+tags = ["ice", "apps"]
 [stack.config]
-server = "mgmt"
-linked_repo = "docker"
+server = "darkmatter"
+linked_repo = "game_servers"
 webhook_enabled = false
 run_directory = "apps/homepage"
