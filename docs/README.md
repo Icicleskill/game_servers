@@ -1,13 +1,13 @@
 ### Game Servers
 | IP | SERVER |
 | ------ | ----- |
-| 50.56 | [Quake Live](games/qlserver.md) |
-| 50.57 | [RTCW](games/rtcwserver.md)|
-| 50.58 | [ETL](games/etlserver.md) |
-| 50.59 | [Counter Strike 2](games/cs2server.md) |
-| 50.60 | [Counter Strike 1.6](games/csserver.md) |
-| 50.61 | [Rust](games/rustserver.md) |
-| 50.62 | [Day of Defeat Source](games/dodsserver.md) |
+| 50.56 | [Quake Live](gqlserver/qlserver.md) |
+| 50.57 | [RTCW](rtcwserver/rtcwserver.md)|
+| 50.58 | [ETL](etlserver/etlserver.md) |
+| 50.59 | [Counter Strike 2](cs2server/cs2server.md) |
+| 50.60 | [Counter Strike 1.6](csserver/csserver.md) |
+| 50.61 | [Rust](rustserver/rustserver.md) |
+| 50.62 | [Day of Defeat Source](dodsserver/dodsserver.md) |
 | 50.63 | [Garry's Mod](games/gmodserver.md) |
 | 50.64 | [Half Life 2 Deathmatch](games/hl2dmserver.md) |
 | 50.65 | [Left 4 Dead 2](games/l4d2server.md) |
