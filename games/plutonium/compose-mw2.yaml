@@ -1,7 +1,8 @@
 services:
-  iw4xmp-1:
+  iw4xmp:
     image: ghcr.io/ayymoss/plutainer:latest
-    container_name: iw4xmp-1
+    container_name: iw4xmp
+    hostname: iw4xmp
     restart: unless-stopped
     networks:
       - icenet

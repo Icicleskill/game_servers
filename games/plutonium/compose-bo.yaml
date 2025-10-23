@@ -1,8 +1,8 @@
 services:
-  t5mp-1:
+  t5mp:
     image: ghcr.io/ayymoss/plutainer:latest
-    container_name: t5mp-1
-    hostname: t5mp-1
+    container_name: t5mp
+    hostname: t5mp
     restart: unless-stopped
     networks:
       - icenet
@@ -17,10 +17,10 @@ services:
       - PLUTO_CONFIG_FILE=dedicated.cfg
       - PLUTO_GAME=t5mp
       - PLUTO_MAX_CLIENTS=18
-  t5sp-1:
+  t5sp:
     image: ghcr.io/ayymoss/plutainer:latest
-    container_name: t5sp-1
-    hostname: t5sp-1
+    container_name: t5sp
+    hostname: t5sp
     restart: unless-stopped
     networks:
       - icenet

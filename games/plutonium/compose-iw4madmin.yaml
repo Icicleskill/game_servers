@@ -26,19 +26,19 @@ services:
       - ./t6mp-1/plutonium/storage/t6/main/logs/games_mp.log:/app/gamelogs/t6mp-1/plutonium/storage/t6/main/logs/games_mp.log:ro
       - ./t6zm-1/plutonium/storage/t6/main/logs/games_zm.log:/app/gamelogs/t6zm-1/plutonium/storage/t6/main/logs/games_zm.log:ro
     depends_on:
-      iw4xmp-1:
+      iw4xmp:
         condition: service_healthy
-      t6zm-1:
+      t6zm:
         condition: service_healthy
-      t6mp-1:
+      t6mp:
         condition: service_healthy
-      t4sp-1:
+      t4sp:
         condition: service_healthy
-      t4mp-1:
+      t4mp:
         condition: service_healthy
-      t5mp-1:
+      t5mp:
         condition: service_healthy
-      t5sp-1:
+      t5sp:
         condition: service_healthy
 networks:
   icenet:

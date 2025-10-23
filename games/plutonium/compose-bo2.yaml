@@ -1,8 +1,8 @@
 services:
-  t6zm-1:
+  t6zm:
     image: ghcr.io/ayymoss/plutainer:latest
-    container_name: t6zm-1
-    hostname: t6zm-1
+    container_name: t6zm
+    hostname: t6zm
     restart: unless-stopped
     networks:
       - icenet
@@ -16,10 +16,10 @@ services:
       - PLUTO_SERVER_KEY=${T6ZM_PLUTO_SERVER_KEY}
       - PLUTO_CONFIG_FILE=dedicated_zm.cfg
       - PLUTO_GAME=t6zm
-  t6mp-1:
+  t6mp:
     image: ghcr.io/ayymoss/plutainer:latest
-    container_name: t6mp-1
-    hostname: t6mp-1
+    container_name: t6mp
+    hostname: t6mp
     restart: unless-stopped
     networks:
       - icenet

@@ -1,8 +1,8 @@
 services:
-  t4sp-1:
+  t4sp:
     image: ghcr.io/ayymoss/plutainer:latest
-    container_name: t4sp-1
-    hostname: t4sp-1
+    container_name: t4sp
+    hostname: t4sp
     restart: unless-stopped
     networks:
       - icenet
@@ -16,10 +16,10 @@ services:
       - PLUTO_SERVER_KEY=${T4SP_PLUTO_SERVER_KEY}
       - PLUTO_CONFIG_FILE=server_zm.cfg
       - PLUTO_GAME=t4sp
-  t4mp-1:
+  t4mp:
     image: ghcr.io/ayymoss/plutainer:latest
-    container_name: t4mp-1
-    hostname: t4mp-1
+    container_name: t4mp
+    hostname: t4mp
     restart: unless-stopped
     networks:
       - icenet
