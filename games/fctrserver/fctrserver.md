@@ -1,14 +1,14 @@
-# Unreal Tournament Server
-#### [Linuxgsm](https://linuxgsm.com/servers/utserver/)
-  * Client Port - 7777
-  * Query Port - 7778
+# Factorio Server
+#### [Linuxgsm](https://linuxgsm.com/servers/fctrserver/)
+  * Client Port - 34197
+  * Query Port - 
   * RCON Port - 
   
-#### [LGSM Config](https://github.com/GameServerManagers/LinuxGSM/tree/master/lgsm/config-default/config-lgsm/utserver)
-  * config-lgsm/utserver/common.cfg
+#### [LGSM Config](https://github.com/GameServerManagers/LinuxGSM/tree/master/lgsm/config-default/config-lgsm/fctrserver)
+  * config-lgsm/fctrserver/common.cfg
 
-#### [Game Configs](https://github.com/GameServerManagers/Game-Server-Configs/tree/main/ut)
-  * serverfiles/LinuxServer/Engine/Binaries/Linux/Game.ini
+#### [Game Configs](https://github.com/GameServerManagers/Game-Server-Configs/tree/main/fctr)
+  * serverfiles/bin/x64/data/fctrserver.json
 
-#### [Icon](../icons/ut-icon.png)
-![](../icons/ut-icon.png)
+#### [Icon](../icons/fctr-icon.png)
+![](../icons/fctr-icon.png)
