@@ -6,6 +6,7 @@ server = "darkmatter"
 linked_repo = "game_servers"
 webhook_enabled = false
 run_directory = "games/vhserver"
+config_files = [{ path = "common.cfg" }]
 post_deploy.command = """
 docker cp common.cfg vhserver:/data/config-lgsm/vhserver/
 docker exec vhserver chown 1000:1000 /data/config-lgsm/vhserver/common.cfg
