@@ -1,0 +1,38 @@
+[[stack]]
+name = "quake_3_arena"
+tags = ["ice", "games"]
+[stack.config]
+server = "darkamtter"
+linked_repo = "docker"
+webhook_enabled = false
+run_directory = "games/q3server"
+config_files = [
+  { path = "common.cfg", requires = "None" }
+  { path = "Game.ini", requires = "None" }
+]
+post_deploy.command = """
+docker cp q3server.cfg q3server:/data/serverfiles/baseq3/
+docker exec q3server chown 1000:1000 /data/serverfiles/baseq3/q3server.cfg
+docker cp common.cfg q3server:/data/config-lgsm/q3server/
+docker exec q3server chown 1000:1000 /data/config-lgsm/q3server/common.cfg
+"""
+environment = """
+####lgsm short name
+LGSM_SHORT=q3
+####container name
+CT_NAME=q3server
+####gamedig game type
+GD_TYPE_ID=q3a
+####server game port
+GAME_PORT=27960
+####server query port
+GAME_QUERY=27960
+####server ip
+GAME_IP=10.42.0.XX
+####macvlan host subnet
+IF_SUBNET=10.42.0.0/24
+####macvlan host gateway
+IF_GATEWAY=10.42.0.1
+####macvlan host interface
+IF_NAME=br0
+"""
