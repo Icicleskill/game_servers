@@ -12,3 +12,23 @@ docker exec csserver chown 1000:1000 /data/serverfiles/cstrike/csserver.cfg
 docker cp common.cfg csserver:/data/config-lgsm/csserver/
 docker exec csserver chown 1000:1000 /data/config-lgsm/csserver/common.cfg
 """
+environment = """
+####lgsm short name
+LGSM_SHORT=vh
+####container name
+CT_NAME=vhserver
+####gamedig game type
+GD_TYPE_ID=valheim
+####server game port
+GAME_PORT=2456
+####server query port
+GAME_QUERY=2456
+####server ip
+GAME_IP=10.42.0.90
+####macvlan host subnet
+IF_SUBNET=10.42.0.0/24
+####macvlan host gateway
+IF_GATEWAY=10.42.0.1
+####macvlan host interface
+IF_NAME=br0
+"""
