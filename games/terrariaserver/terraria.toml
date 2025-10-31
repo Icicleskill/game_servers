@@ -1,0 +1,36 @@
+[[stack]]
+name = "terraria"
+tags = ["ice", "games"]
+[stack.config]
+server = "darkmatter"
+linked_repo = "game_servers"
+webhook_enabled = false
+run_directory = "games/terrariaserver"
+config_files = [
+  { path = "common.cfg", requires = "None" }
+  { path = "terrariaserver.txt", requires = "None" }
+]
+post_deploy.command = """
+docker cp common.cfg vhserver:/data/config-lgsm/vhserver/
+docker exec vhserver chown 1000:1000 /data/config-lgsm/vhserver/common.cfg
+"""
+environment = """
+####lgsm short name
+LGSM_SHORT=terraria
+####container name
+CT_NAME=terrariaserver
+####gamedig game type
+GD_TYPE_ID=terrariatshock
+####server game port
+GAME_PORT=7777
+####server query port
+GAME_QUERY=7777
+####server ip
+GAME_IP=10.42.0.XX
+####macvlan host subnet
+IF_SUBNET=10.42.0.0/24
+####macvlan host gateway
+IF_GATEWAY=10.42.0.1
+####macvlan host interface
+IF_NAME=br0
+"""

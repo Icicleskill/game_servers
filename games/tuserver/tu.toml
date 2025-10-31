@@ -1,0 +1,38 @@
+[[stack]]
+name = "tower_unite"
+tags = ["ice", "games"]
+[stack.config]
+server = "darkmatter"
+linked_repo = "game_servers"
+webhook_enabled = false
+run_directory = "games/tuserver"
+config_files = [
+  { path = "common.cfg", requires = "None" }
+  { path = "tuserver.ini", requires = "None" }
+]
+post_deploy.command = """
+docker cp tuserver.ini tuserver:/data/serverfiles/Tower/Binaries/Linux/
+docker exec tuserver chown 1000:1000 /data/serverfiles/Tower/Binaries/Linux/tuserver.ini
+docker cp common.cfg tuserver:/data/config-lgsm/tuserver/
+docker exec tuserver chown 1000:1000 /data/config-lgsm/tuserver/common.cfg
+"""
+environment = """
+####lgsm short name
+LGSM_SHORT=tu
+####container name
+CT_NAME=tuserver
+####gamedig game type
+GD_TYPE_ID=towerunite
+####server game port
+GAME_PORT=7777
+####server query port
+GAME_QUERY=27015
+####server ip
+GAME_IP=10.42.0.XX
+####macvlan host subnet
+IF_SUBNET=10.42.0.0/24
+####macvlan host gateway
+IF_GATEWAY=10.42.0.1
+####macvlan host interface
+IF_NAME=br0
+"""

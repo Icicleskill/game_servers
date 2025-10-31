@@ -14,10 +14,6 @@ services:
       - homepage.name=${CT_NAME}
       - homepage.icon=https://raw.githubusercontent.com/GameServerManagers/LinuxGSM/refs/heads/master/lgsm/data/gameicons/${LGSM_SHORT}-icon.png
       - homepage.href=steam://connect/${GAME_IP}:${GAME_PORT}
-      - homepage.widget.type=gamedig
-      - homepage.widget.serverType=${GD_TYPE_ID}
-      - homepage.widget.url=udp://${GAME_IP}:${GAME_QUERY}
-      - homepage.widget.fields=["status", "map", "currentPlayers", "ping"]
       - homepage.container=${CT_NAME}
       - homepage.showStats=false
 volumes:

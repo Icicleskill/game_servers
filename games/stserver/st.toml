@@ -1,0 +1,36 @@
+[[stack]]
+name = "stationeers"
+tags = ["ice", "games"]
+[stack.config]
+server = "darkamtter"
+linked_repo = "docker"
+webhook_enabled = false
+run_directory = "games/utserver"
+config_files = [
+  { path = "common.cfg", requires = "None" }
+  { path = "Game.ini", requires = "None" }
+]
+post_deploy.command = """
+docker cp stserver.xml stserver:/data/serverfiles/
+docker exec stserver chown 1000:1000 /data/serverfiles/stserver.xml
+docker cp common.cfg stserver:/data/config-lgsm/stserver/
+docker exec stserver chown 1000:1000 /data/config-lgsm/stserver/common.cfg
+"""
+environment = """
+####lgsm short name
+LGSM_SHORT=st
+####container name
+CT_NAME=stserver
+####server game port
+GAME_PORT=27015
+####server query port
+GAME_QUERY=27016
+####server ip
+GAME_IP=10.42.0.XX
+####macvlan host subnet
+IF_SUBNET=10.42.0.0/24
+####macvlan host gateway
+IF_GATEWAY=10.42.0.1
+####macvlan host interface
+IF_NAME=br0
+"""
