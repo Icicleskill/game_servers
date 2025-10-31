@@ -3,19 +3,19 @@ services:
     image: gameservermanagers/gameserver:vh
     restart: unless-stopped
     networks:
-      llamamac:
-        ipv4_address: 192.168.50.XX
+      icemac:
+        ipv4_address: 10.42.0.${VH_IP}
     volumes:
       - data:/data
     container_name: vhserver
     labels:
       - homepage.group=Games
       - homepage.name=Valhiem
-      - homepage.icon=https://raw.githubusercontent.com/GameServerManagers/LinuxGSM/refs/heads/master/lgsm/data/gameicons/ut-icon.png
-      - homepage.href=steam://connect/192.168.50.XX:7777
+      - homepage.icon=https://raw.githubusercontent.com/GameServerManagers/LinuxGSM/refs/heads/master/lgsm/data/gameicons/vh-icon.png
+      - homepage.href=steam://connect/192.168.50.${VH_IP}:${VH_PORT}
       - homepage.widget.type=gamedig
       - homepage.widget.serverType=valhiem
-      - homepage.widget.url=udp://192.168.50.XX:7778
+      - homepage.widget.url=udp://192.168.50.${VH_IP}:${VH_QUERY}
       - homepage.widget.fields=["status", "map", "currentPlayers", "ping"]
       - homepage.container=vhserver
       - homepage.showStats=false
@@ -23,12 +23,12 @@ volumes:
   data:
     name: vhserver_data
 networks:
-  llamamac:
-    name: llamamac
+  icemac:
+    name: icemac
     driver: macvlan
     driver_opts:
-      parent: enp6s18
+      parent: ${IF_NAME}
     ipam:
       config:
-        - subnet: "192.168.50.0/23"
-          gateway: "192.168.50.1"
+        - subnet: "10.42.0.0/24"
+          gateway: "10.42.0.1"
