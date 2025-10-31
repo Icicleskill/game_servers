@@ -1,5 +1,5 @@
 # Unreal Tournament Server
-#### [Linuxgsm](https://linuxgsm.com/servers/ut3server/)
+#### [Linuxgsm](https://linuxgsm.com/servers/utserver/)
   * Client Port - 7777
   * Query Port - 7778
   * RCON Port - 
