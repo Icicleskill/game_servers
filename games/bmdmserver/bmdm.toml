@@ -1,32 +1,32 @@
 [[stack]]
-name = "unreal_tournament"
+name = "black_mesa_deathmatch"
 tags = ["ice", "games"]
 [stack.config]
 server = "darkamtter"
 linked_repo = "docker"
 webhook_enabled = false
-run_directory = "games/utserver"
+run_directory = "games/bmdmserver"
 config_files = [
   { path = "common.cfg", requires = "None" },
-  { path = "Game.ini", requires = "None" }
+  { path = "bmdmserver.cfg", requires = "None" }
 ]
 post_deploy.command = """
-docker cp Game.ini utserver:/data/serverfiles/LinuxServer/UnrealTournament/Saved/Config/LinuxServer/
-docker exec utserver chown 1000:1000 /data/serverfiles/LinuxServer/UnrealTournament/Saved/Config/LinuxServer/Game.ini
-docker cp common.cfg utserver:/data/config-lgsm/utserver/
-docker exec utserver chown 1000:1000 /data/config-lgsm/utserver/common.cfg
+docker cp bmdmserver.cfg bmdmserver:/data/serverfiles/bms/cfg/
+docker exec bmdmserver chown 1000:1000 /data/serverfiles/bms/cfg/bmdmserver.cfg
+docker cp common.cfg bmdmserver:/data/config-lgsm/bmdmserver/
+docker exec bmdmserver chown 1000:1000 /data/config-lgsm/bmdmserver/common.cfg
 """
 environment = """
 ####lgsm short name
-LGSM_SHORT=ut
+LGSM_SHORT=bmdm
 ####container name
-CT_NAME=utserver
+CT_NAME=bmdmserver
 ####gamedig game type
 GD_TYPE_ID=blackmesa
 ####server game port
-GAME_PORT=7777
+GAME_PORT=27015
 ####server query port
-GAME_QUERY=7778
+GAME_QUERY=27015
 ####server ip
 GAME_IP=10.42.0.XX
 ####macvlan host subnet
