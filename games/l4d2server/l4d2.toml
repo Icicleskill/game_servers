@@ -1,11 +1,15 @@
 [[stack]]
 name = "left_4_dead_2"
-tags = ["gs1", "games"]
+tags = ["ice", "games"]
 [stack.config]
-server = "gameserver1"
+server = "darkmatter"
 linked_repo = "docker"
 webhook_enabled = false
 run_directory = "games/l4d2server"
+config_files = [
+  { path = "common.cfg", requires = "None" }
+  { path = "l4d2server.cfg", requires = "None" }
+]
 post_deploy.command = """
 docker cp l4d2server.cfg l4d2server:/data/serverfiles/left4dead2/cfg/
 docker exec l4d2server chown 1000:1000 /data/serverfiles/left4dead2/cfg/l4d2server.cfg
@@ -14,17 +18,17 @@ docker exec l4d2server chown 1000:1000 /data/config-lgsm/l4d2server/common.cfg
 """
 environment = """
 ####lgsm short name
-LGSM_SHORT=vh
+LGSM_SHORT=l4d2
 ####container name
-CT_NAME=vhserver
+CT_NAME=l4d2server
 ####gamedig game type
-GD_TYPE_ID=valheim
+GD_TYPE_ID=l4d2
 ####server game port
-GAME_PORT=2456
+GAME_PORT=27015
 ####server query port
-GAME_QUERY=2456
+GAME_QUERY=27015
 ####server ip
-GAME_IP=10.42.0.90
+GAME_IP=10.42.0.XX
 ####macvlan host subnet
 IF_SUBNET=10.42.0.0/24
 ####macvlan host gateway

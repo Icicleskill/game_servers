@@ -1,11 +1,15 @@
 [[stack]]
 name = "call_of_duty_4_mw"
-tags = ["gs1", "games"]
+tags = ["ice", "games"]
 [stack.config]
-server = "gameserver1"
+server = "darkmatter"
 linked_repo = "docker"
 webhook_enabled = false
 run_directory = "games/cod4server"
+config_files = [
+  { path = "common.cfg", requires = "None" }
+  { path = "cod4server.cfg", requires = "None" }
+]
 post_deploy.command = """
 docker cp cod4server.cfg cod4server:/data/serverfiles/main/
 docker exec cod4server chown 1000:1000 /data/serverfiles/main/cod4server.cfg
@@ -14,17 +18,17 @@ docker exec cod4server chown 1000:1000 /data/config-lgsm/cod4server/common.cfg
 """
 environment = """
 ####lgsm short name
-LGSM_SHORT=vh
+LGSM_SHORT=cod4
 ####container name
-CT_NAME=vhserver
+CT_NAME=cod4server
 ####gamedig game type
-GD_TYPE_ID=valheim
+GD_TYPE_ID=cod4mw
 ####server game port
-GAME_PORT=2456
+GAME_PORT=28960
 ####server query port
-GAME_QUERY=2456
+GAME_QUERY=28960
 ####server ip
-GAME_IP=10.42.0.90
+GAME_IP=10.42.0.XX
 ####macvlan host subnet
 IF_SUBNET=10.42.0.0/24
 ####macvlan host gateway

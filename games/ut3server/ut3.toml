@@ -1,11 +1,16 @@
 [[stack]]
 name = "unreal_tournament_3"
-tags = ["gs2", "games"]
+tags = ["ice", "games"]
 [stack.config]
-server = "gameserver2"
+server = "darkmatter"
 linked_repo = "docker"
 webhook_enabled = false
 run_directory = "games/ut3server"
+config_files = [
+  { path = "common.cfg", requires = "None" }
+  { path = "UTGame.ini", requires = "None" }
+  { path = "UTWeb.ini", requires = "None" }
+]
 post_deploy.command = """
 docker cp UTGame.ini ut3server:/data/serverfiles/UTGame/Config/ut3server/
 docker exec ut3server chown 1000:1000 /data/serverfiles/UTGame/Config/ut3server/UTGame.ini
@@ -16,17 +21,17 @@ docker exec ut3server chown 1000:1000 /data/config-lgsm/ut3server/common.cfg
 """
 environment = """
 ####lgsm short name
-LGSM_SHORT=vh
+LGSM_SHORT=ut3
 ####container name
-CT_NAME=vhserver
+CT_NAME=ut3server
 ####gamedig game type
-GD_TYPE_ID=valheim
+GD_TYPE_ID=unrealtournament3
 ####server game port
-GAME_PORT=2456
+GAME_PORT=7777
 ####server query port
-GAME_QUERY=2456
+GAME_QUERY=6500
 ####server ip
-GAME_IP=10.42.0.90
+GAME_IP=10.42.0.XX
 ####macvlan host subnet
 IF_SUBNET=10.42.0.0/24
 ####macvlan host gateway

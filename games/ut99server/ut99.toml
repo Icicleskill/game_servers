@@ -1,11 +1,15 @@
 [[stack]]
 name = "unreal_tournament_99"
-tags = ["gs2", "games"]
+tags = ["ice", "games"]
 [stack.config]
-server = "gameserver2"
+server = "darkamtter"
 linked_repo = "docker"
 webhook_enabled = false
 run_directory = "games/ut99server"
+config_files = [
+  { path = "common.cfg", requires = "None" }
+  { path = "ut99server.ini", requires = "None" }
+]
 post_deploy.command = """
 docker cp ut99server.ini ut99server:/data/serverfiles/System64/
 docker exec ut99server chown 1000:1000 /data/serverfiles/System64/ut99server.ini
@@ -14,17 +18,17 @@ docker exec ut99server chown 1000:1000 /data/config-lgsm/ut99server/common.cfg
 """
 environment = """
 ####lgsm short name
-LGSM_SHORT=vh
+LGSM_SHORT=ut99
 ####container name
-CT_NAME=vhserver
+CT_NAME=ut99server
 ####gamedig game type
-GD_TYPE_ID=valheim
+GD_TYPE_ID=unrealtournament
 ####server game port
-GAME_PORT=2456
+GAME_PORT=8076
 ####server query port
-GAME_QUERY=2456
+GAME_QUERY=8076
 ####server ip
-GAME_IP=10.42.0.90
+GAME_IP=10.42.0.XX
 ####macvlan host subnet
 IF_SUBNET=10.42.0.0/24
 ####macvlan host gateway

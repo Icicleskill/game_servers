@@ -7,7 +7,7 @@ linked_repo = "game_servers"
 webhook_enabled = false
 run_directory = "games/vhserver"
 config_files = [
-  { path = "common.cfg", requires = "Redeploy" }
+  { path = "common.cfg", requires = "None" }
 ]
 post_deploy.command = """
 docker cp common.cfg vhserver:/data/config-lgsm/vhserver/

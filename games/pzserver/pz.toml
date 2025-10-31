@@ -1,11 +1,15 @@
 [[stack]]
 name = "project_zomboid"
-tags = ["gs2", "games"]
+tags = ["ice", "games"]
 [stack.config]
-server = "gameserver2"
+server = "darkmatter"
 linked_repo = "docker"
 webhook_enabled = false
 run_directory = "games/pzserver"
+config_files = [
+  { path = "common.cfg", requires = "None" }
+  { path = "pzserver.ini", requires = "None" }
+]
 post_deploy.command = """
 docker cp pzserver.ini pzserver:/data/.Zomboid/Server/
 docker exec pzserver chown 1000:1000 /data/.Zomboid/Server/pzserver.ini
@@ -14,17 +18,17 @@ docker exec pzserver chown 1000:1000 /data/config-lgsm/pzserver/common.cfg
 """
 environment = """
 ####lgsm short name
-LGSM_SHORT=vh
+LGSM_SHORT=pz
 ####container name
-CT_NAME=vhserver
+CT_NAME=pzserver
 ####gamedig game type
-GD_TYPE_ID=valheim
+GD_TYPE_ID=projectzomboid
 ####server game port
-GAME_PORT=2456
+GAME_PORT=16261
 ####server query port
-GAME_QUERY=2456
+GAME_QUERY=16262
 ####server ip
-GAME_IP=10.42.0.90
+GAME_IP=10.42.0.XX
 ####macvlan host subnet
 IF_SUBNET=10.42.0.0/24
 ####macvlan host gateway

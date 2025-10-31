@@ -6,6 +6,10 @@ server = "darkmatter"
 linked_repo = "docker"
 webhook_enabled = false
 run_directory = "games/armarserver"
+config_files = [
+  { path = "common.cfg", requires = "None" }
+  { path = "armarserver_config.json", requires = "None" }
+]
 post_deploy.command = """
 docker cp armarserver_config.json armarserver:/data/serverfiles/
 docker exec armarserver chown 1000:1000 /data/serverfiles/armarserver_config.json
@@ -14,17 +18,17 @@ docker exec armarserver chown 1000:1000 /data/config-lgsm/armarserver/common.cfg
 """
 environment = """
 ####lgsm short name
-LGSM_SHORT=vh
+LGSM_SHORT=armar
 ####container name
-CT_NAME=vhserver
+CT_NAME=armarserver
 ####gamedig game type
-GD_TYPE_ID=valheim
+GD_TYPE_ID=armar
 ####server game port
-GAME_PORT=2456
+GAME_PORT=2001
 ####server query port
-GAME_QUERY=2456
+GAME_QUERY=17777
 ####server ip
-GAME_IP=10.42.0.90
+GAME_IP=10.42.0.XX
 ####macvlan host subnet
 IF_SUBNET=10.42.0.0/24
 ####macvlan host gateway

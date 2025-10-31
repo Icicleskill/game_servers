@@ -1,11 +1,18 @@
 [[stack]]
 name = "quake_live"
-tags = ["gs2", "games"]
+tags = ["ice", "games"]
 [stack.config]
-server = "gameserver2"
+server = "darkmatter"
 linked_repo = "docker"
 webhook_enabled = false
 run_directory = "games/qlserver"
+config_files = [
+  { path = "common.cfg", requires = "None" }
+  { path = "qlserver.cfg", requires = "None" }
+  { path = "mappool.txt", requires = "None" }
+  { path = "workshop.txt", requires = "None" }
+  { path = "access.txt", requires = "None" }
+]
 post_deploy.command = """
 docker cp qlserver.cfg qlserver:/data/serverfiles/baseq3/
 docker exec qlserver chown 1000:1000 /data/serverfiles/baseq3/qlserver.cfg
@@ -20,17 +27,17 @@ docker exec qlserver chown 1000:1000 /data/config-lgsm/qlserver/common.cfg
 """
 environment = """
 ####lgsm short name
-LGSM_SHORT=vh
+LGSM_SHORT=ql
 ####container name
-CT_NAME=vhserver
+CT_NAME=qlserver
 ####gamedig game type
-GD_TYPE_ID=valheim
+GD_TYPE_ID=quakelive
 ####server game port
-GAME_PORT=2456
+GAME_PORT=27960
 ####server query port
-GAME_QUERY=2456
+GAME_QUERY=27960
 ####server ip
-GAME_IP=10.42.0.90
+GAME_IP=10.42.0.XX
 ####macvlan host subnet
 IF_SUBNET=10.42.0.0/24
 ####macvlan host gateway

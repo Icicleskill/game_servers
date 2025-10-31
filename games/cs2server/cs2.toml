@@ -1,11 +1,15 @@
 [[stack]]
 name = "counter_stike_2"
-tags = ["gs1", "games"]
+tags = ["ice", "games"]
 [stack.config]
-server = "gameserver1"
+server = "darkmatter"
 linked_repo = "docker"
 webhook_enabled = false
 run_directory = "games/cs2server"
+config_files = [
+  { path = "common.cfg", requires = "None" }
+  { path = "cs2server.cfg", requires = "None" }
+]
 post_deploy.command = """
 docker cp cs2server.cfg cs2server:/data/serverfiles/game/csgo/cfg/
 docker exec cs2server chown 1000:1000 /data/serverfiles/game/csgo/cfg/cs2server.cfg
@@ -14,17 +18,17 @@ docker exec cs2server chown 1000:1000 /data/config-lgsm/cs2server/common.cfg
 """
 environment = """
 ####lgsm short name
-LGSM_SHORT=vh
+LGSM_SHORT=cs2
 ####container name
-CT_NAME=vhserver
+CT_NAME=cs2server
 ####gamedig game type
-GD_TYPE_ID=valheim
+GD_TYPE_ID=counterstrike2
 ####server game port
-GAME_PORT=2456
+GAME_PORT=27015
 ####server query port
-GAME_QUERY=2456
+GAME_QUERY=27015
 ####server ip
-GAME_IP=10.42.0.90
+GAME_IP=10.42.0.XX
 ####macvlan host subnet
 IF_SUBNET=10.42.0.0/24
 ####macvlan host gateway

@@ -6,6 +6,11 @@ server = "darkmatter"
 linked_repo = "docker"
 webhook_enabled = false
 run_directory = "games/arma3server"
+config_files = [
+  { path = "common.cfg", requires = "None" }
+  { path = "network.cfg", requires = "None" }
+  { path = "server.cfg", requires = "None" }
+]
 post_deploy.command = """
 docker cp server.cfg arma3server:/data/serverfiles/cfg/
 docker exec arma3server chown 1000:1000 /data/serverfiles/cfg/server.cfg
@@ -16,17 +21,17 @@ docker exec arma3server chown 1000:1000 /data/config-lgsm/arma3server/common.cfg
 """
 environment = """
 ####lgsm short name
-LGSM_SHORT=vh
+LGSM_SHORT=arma3
 ####container name
-CT_NAME=vhserver
+CT_NAME=arma3server
 ####gamedig game type
-GD_TYPE_ID=valheim
+GD_TYPE_ID=arma3
 ####server game port
-GAME_PORT=2456
+GAME_PORT=2302
 ####server query port
-GAME_QUERY=2456
+GAME_QUERY=2302
 ####server ip
-GAME_IP=10.42.0.90
+GAME_IP=10.42.0.XX
 ####macvlan host subnet
 IF_SUBNET=10.42.0.0/24
 ####macvlan host gateway

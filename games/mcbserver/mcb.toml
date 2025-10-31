@@ -1,11 +1,15 @@
 [[stack]]
 name = "minecraft_bedrock"
-tags = ["gs2", "games"]
+tags = ["ice", "games"]
 [stack.config]
-server = "gameserver2"
+server = "darkmatter"
 linked_repo = "docker"
 webhook_enabled = false
 run_directory = "games/mcbserver"
+config_files = [
+  { path = "common.cfg", requires = "None" }
+  { path = "server.properties", requires = "None" }
+]
 post_deploy.command = """
 docker cp server.properties mcbserver:/data/serverfiles/
 docker exec mcbserver chown 1000:1000 /data/serverfiles/server.properties
@@ -14,17 +18,17 @@ docker exec mcbserver chown 1000:1000 /data/config-lgsm/mcbserver/common.cfg
 """
 environment = """
 ####lgsm short name
-LGSM_SHORT=vh
+LGSM_SHORT=mcb
 ####container name
-CT_NAME=vhserver
+CT_NAME=mcbserver
 ####gamedig game type
-GD_TYPE_ID=valheim
+GD_TYPE_ID=mbe
 ####server game port
-GAME_PORT=2456
+GAME_PORT=19132
 ####server query port
-GAME_QUERY=2456
+GAME_QUERY=19132
 ####server ip
-GAME_IP=10.42.0.90
+GAME_IP=10.42.0.XX
 ####macvlan host subnet
 IF_SUBNET=10.42.0.0/24
 ####macvlan host gateway

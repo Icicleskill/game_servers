@@ -1,11 +1,15 @@
 [[stack]]
 name = "team_fortress_2"
-tags = ["gs2", "games"]
+tags = ["ice", "games"]
 [stack.config]
-server = "gameserver2"
+server = "darkamtter"
 linked_repo = "docker"
 webhook_enabled = false
 run_directory = "games/tf2server"
+config_files = [
+  { path = "common.cfg", requires = "None" }
+  { path = "tf2server.cfg", requires = "None" }
+]
 post_deploy.command = """
 docker cp tf2server.cfg tf2server:/data/serverfiles/tf/cfg/
 docker exec tf2server chown 1000:1000 /data/serverfiles/tf/cfg/tf2server.cfg
@@ -14,17 +18,17 @@ docker exec tf2server chown 1000:1000 /data/config-lgsm/tf2server/common.cfg
 """
 environment = """
 ####lgsm short name
-LGSM_SHORT=vh
+LGSM_SHORT=tf2
 ####container name
-CT_NAME=vhserver
+CT_NAME=tf2server
 ####gamedig game type
-GD_TYPE_ID=valheim
+GD_TYPE_ID=teamfortress2
 ####server game port
-GAME_PORT=2456
+GAME_PORT=27015
 ####server query port
-GAME_QUERY=2456
+GAME_QUERY=27015
 ####server ip
-GAME_IP=10.42.0.90
+GAME_IP=10.42.0.XX
 ####macvlan host subnet
 IF_SUBNET=10.42.0.0/24
 ####macvlan host gateway

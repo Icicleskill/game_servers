@@ -1,11 +1,15 @@
 [[stack]]
 name = "unreal_tournament"
-tags = ["gs2", "games"]
+tags = ["ice", "games"]
 [stack.config]
-server = "gameserver2"
+server = "darkamtter"
 linked_repo = "docker"
 webhook_enabled = false
 run_directory = "games/utserver"
+config_files = [
+  { path = "common.cfg", requires = "None" }
+  { path = "Game.ini", requires = "None" }
+]
 post_deploy.command = """
 docker cp Game.ini utserver:/data/serverfiles/LinuxServer/UnrealTournament/Saved/Config/LinuxServer/
 docker exec utserver chown 1000:1000 /data/serverfiles/LinuxServer/UnrealTournament/Saved/Config/LinuxServer/Game.ini
@@ -24,7 +28,7 @@ GAME_PORT=7777
 ####server query port
 GAME_QUERY=7778
 ####server ip
-GAME_IP=10.42.0.91
+GAME_IP=10.42.0.XX
 ####macvlan host subnet
 IF_SUBNET=10.42.0.0/24
 ####macvlan host gateway

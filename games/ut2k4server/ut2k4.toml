@@ -1,11 +1,15 @@
 [[stack]]
 name = "unreal_tournament_2004"
-tags = ["gs2", "games"]
+tags = ["ice", "games"]
 [stack.config]
-server = "gameserver2"
+server = "darkmatter"
 linked_repo = "docker"
 webhook_enabled = false
 run_directory = "games/ut2k4server"
+config_files = [
+  { path = "common.cfg", requires = "None" }
+  { path = "ut2k4server.ini", requires = "None" }
+]
 post_deploy.command = """
 docker cp ut2k4server.ini ut2k4server:/data/serverfiles/System/
 docker exec ut2k4server chown 1000:1000 /data/serverfiles/System/ut2k4server.ini
@@ -14,17 +18,17 @@ docker exec ut2k4server chown 1000:1000 /data/config-lgsm/ut2k4server/common.cfg
 """
 environment = """
 ####lgsm short name
-LGSM_SHORT=vh
+LGSM_SHORT=ut2k4
 ####container name
-CT_NAME=vhserver
+CT_NAME=ut2k4server
 ####gamedig game type
-GD_TYPE_ID=valheim
+GD_TYPE_ID=unrealtournament2004
 ####server game port
-GAME_PORT=2456
+GAME_PORT=7777
 ####server query port
-GAME_QUERY=2456
+GAME_QUERY=7778
 ####server ip
-GAME_IP=10.42.0.90
+GAME_IP=10.42.0.XX
 ####macvlan host subnet
 IF_SUBNET=10.42.0.0/24
 ####macvlan host gateway
