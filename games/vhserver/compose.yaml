@@ -4,7 +4,7 @@ services:
     restart: unless-stopped
     networks:
       icemac:
-        ipv4_address: 10.42.0.${VH_IP}
+        ipv4_address: ${VH_IP}
     volumes:
       - data:/data
     container_name: vhserver
@@ -12,10 +12,10 @@ services:
       - homepage.group=Games
       - homepage.name=Valhiem
       - homepage.icon=https://raw.githubusercontent.com/GameServerManagers/LinuxGSM/refs/heads/master/lgsm/data/gameicons/vh-icon.png
-      - homepage.href=steam://connect/192.168.50.${VH_IP}:${VH_PORT}
+      - homepage.href=steam://connect/${VH_IP}:${VH_PORT}
       - homepage.widget.type=gamedig
       - homepage.widget.serverType=valhiem
-      - homepage.widget.url=udp://192.168.50.${VH_IP}:${VH_QUERY}
+      - homepage.widget.url=udp://${VH_IP}:${VH_QUERY}
       - homepage.widget.fields=["status", "map", "currentPlayers", "ping"]
       - homepage.container=vhserver
       - homepage.showStats=false
@@ -30,5 +30,5 @@ networks:
       parent: ${IF_NAME}
     ipam:
       config:
-        - subnet: "10.42.0.0/24"
-          gateway: "10.42.0.1"
+        - subnet: "${IF_SUBNET}"
+          gateway: "${IF_GATEWAY}"
