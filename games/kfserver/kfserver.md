@@ -1,14 +1,14 @@
-# Unreal Tournament Server
-#### [Linuxgsm](https://linuxgsm.com/servers/utserver/)
-  * Client Port - 7777
-  * Query Port - 7778
+# Killing Floor Server
+#### [Linuxgsm](https://linuxgsm.com/servers/kfserver/)
+  * Client Port - 7707
+  * Query Port - 7708
   * RCON Port - 
   
-#### [LGSM Config](https://github.com/GameServerManagers/LinuxGSM/tree/master/lgsm/config-default/config-lgsm/utserver)
-  * config-lgsm/utserver/common.cfg
+#### [LGSM Config](https://github.com/GameServerManagers/LinuxGSM/tree/master/lgsm/config-default/config-lgsm/kfserver)
+  * config-lgsm/kfserver/common.cfg
 
-#### [Game Configs](https://github.com/GameServerManagers/Game-Server-Configs/tree/main/ut)
+#### [Game Configs](https://github.com/GameServerManagers/Game-Server-Configs/tree/main/kf)
   * serverfiles/LinuxServer/Engine/Binaries/Linux/Game.ini
 
-#### [Icon](../icons/ut-icon.png)
-![](../icons/ut-icon.png)
+#### [Icon](../icons/kf-icon.png)
+![](../icons/kf-icon.png)

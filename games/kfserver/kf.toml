@@ -24,9 +24,9 @@ CT_NAME=utserver
 ####gamedig game type
 GD_TYPE_ID=unrealtournament
 ####server game port
-GAME_PORT=7777
+GAME_PORT=7707
 ####server query port
-GAME_QUERY=7778
+GAME_QUERY=7708
 ####server ip
 GAME_IP=10.42.0.XX
 ####macvlan host subnet
