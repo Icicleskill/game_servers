@@ -1,5 +1,5 @@
 [[stack]]
-name = "valhiem"
+name = "valheim"
 tags = ["ice", "games"]
 [stack.config]
 server = "darkmatter"
@@ -16,7 +16,7 @@ LGSM_SHORT=vh
 ####container name
 CT_NAME=vhserver
 ####gamedig game type
-GD_TYPE_ID=valhiem
+GD_TYPE_ID=valheim
 ####server game port
 GAME_PORT=2456
 ####server query port
