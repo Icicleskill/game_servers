@@ -11,11 +11,22 @@ docker cp common.cfg vhserver:/data/config-lgsm/vhserver/
 docker exec vhserver chown 1000:1000 /data/config-lgsm/vhserver/common.cfg
 """
 environment = """
+#lgsm short name
+LGSM_SHORT=VH
+#container name
+CT_NAME=vhserver
+#gamedig game type
+GD_TYPE_ID=valhiem
+#server ip
 GAME_IP=10.42.0.90
+#server game port
 GAME_PORT=2456
+#server query port
 GAME_QUERY=2456
-#DONT TOUCH ANYTHING BELOW
+#macvlan host interface
 IF_NAME=br0
+#macvlan host subnet
 IF_SUBNET=10.42.0.0/24
+#macvlan host gateway
 IF_GATEWAY=10.42.0.1
 """
