@@ -8,7 +8,7 @@
   * config-lgsm/ckserver/common.cfg
 
 #### [Game Configs](https://github.com/GameServerManagers/Game-Server-Configs/tree/main/ck)
-  * serverfiles/LinuxServer/Engine/Binaries/Linux/Game.ini
+  * serverfiles/gamedata/ckserver/ServerConfig.json
 
 #### [Icon](../icons/ck-icon.png)
 ![](../icons/ck-icon.png)
