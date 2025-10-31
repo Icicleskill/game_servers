@@ -1,0 +1,38 @@
+[[stack]]
+name = "left_4_dead"
+tags = ["ice", "games"]
+[stack.config]
+server = "darkmatter"
+linked_repo = "docker"
+webhook_enabled = false
+run_directory = "games/l4dserver"
+config_files = [
+  { path = "common.cfg", requires = "None" }
+  { path = "l4dserver.cfg", requires = "None" }
+]
+post_deploy.command = """
+docker cp l4dserver.cfg l4dserver:/data/serverfiles/left4dead/cfg/
+docker exec l4dserver chown 1000:1000 /data/serverfiles/left4dead/cfg/l4dserver.cfg
+docker cp common.cfg l4dserver:/data/config-lgsm/l4dserver/
+docker exec l4dserver chown 1000:1000 /data/config-lgsm/l4dserver/common.cfg
+"""
+environment = """
+####lgsm short name
+LGSM_SHORT=l4d
+####container name
+CT_NAME=l4dserver
+####gamedig game type
+GD_TYPE_ID=l4d
+####server game port
+GAME_PORT=27015
+####server query port
+GAME_QUERY=27015
+####server ip
+GAME_IP=10.42.0.XX
+####macvlan host subnet
+IF_SUBNET=10.42.0.0/24
+####macvlan host gateway
+IF_GATEWAY=10.42.0.1
+####macvlan host interface
+IF_NAME=br0
+"""

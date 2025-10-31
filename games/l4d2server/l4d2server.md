@@ -1,4 +1,4 @@
-# Left 4 Dead Server
+# Left 4 Dead 2 Server
 #### [Linuxgsm](https://linuxgsm.com/servers/l4d2server/)
   * Client Port - 27015
   * Query Port - 
