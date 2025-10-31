@@ -6,6 +6,13 @@ server = "darkmatter"
 linked_repo = "game_servers"
 webhook_enabled = false
 run_directory = "games/vhserver"
+pre_deploy.command = """
+docker volume create vhserver_data
+"""
+post_deploy.command = """
+docker cp common.cfg vhserver:/data/config-lgsm/vhserver/
+docker exec vhserver chown 1000:1000 /data/config-lgsm/vhserver/common.cfg
+"""
 environment = """
 VH_IP=10.42.0.90
 VH_PORT=2456
@@ -14,8 +21,4 @@ VH_QUERY=2456
 IF_NAME=br0
 IF_SUBNET=10.42.0.0/24
 IF_GATEWAY=10.42.0.1
-"""
-post_deploy.command = """
-docker cp common.cfg vhserver:/data/config-lgsm/vhserver/
-docker exec vhserver chown 1000:1000 /data/config-lgsm/vhserver/common.cfg
 """
