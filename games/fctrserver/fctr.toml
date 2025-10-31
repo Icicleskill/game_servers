@@ -22,7 +22,7 @@ LGSM_SHORT=ut
 ####container name
 CT_NAME=utserver
 ####gamedig game type
-GD_TYPE_ID=unrealtournament
+GD_TYPE_ID=factorio
 ####server game port
 GAME_PORT=7777
 ####server query port
