@@ -1,32 +1,32 @@
 [[stack]]
-name = "unreal_tournament"
+name = "killing_floor_2"
 tags = ["ice", "games"]
 [stack.config]
 server = "darkamtter"
 linked_repo = "docker"
 webhook_enabled = false
-run_directory = "games/utserver"
+run_directory = "games/kf2server"
 config_files = [
   { path = "common.cfg", requires = "None" }
   { path = "Game.ini", requires = "None" }
 ]
 post_deploy.command = """
-docker cp Game.ini utserver:/data/serverfiles/LinuxServer/UnrealTournament/Saved/Config/LinuxServer/
-docker exec utserver chown 1000:1000 /data/serverfiles/LinuxServer/UnrealTournament/Saved/Config/LinuxServer/Game.ini
-docker cp common.cfg utserver:/data/config-lgsm/utserver/
-docker exec utserver chown 1000:1000 /data/config-lgsm/utserver/common.cfg
+docker cp kf2server.ini kf2server:/data/serverfiles/System/
+docker exec kf2server chown 1000:1000 /data/serverfiles/System/kf2server.ini
+docker cp common.cfg kf2server:/data/config-lgsm/kf2server/
+docker exec kf2server chown 1000:1000 /data/config-lgsm/kf2server/common.cfg
 """
 environment = """
 ####lgsm short name
-LGSM_SHORT=ut
+LGSM_SHORT=kf2
 ####container name
-CT_NAME=utserver
+CT_NAME=kf2server
 ####gamedig game type
-GD_TYPE_ID=unrealtournament
+GD_TYPE_ID=killingfloor2
 ####server game port
-GAME_PORT=7777
+GAME_PORT=7707
 ####server query port
-GAME_QUERY=7778
+GAME_QUERY=7708
 ####server ip
 GAME_IP=10.42.0.XX
 ####macvlan host subnet
