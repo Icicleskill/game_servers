@@ -7,10 +7,10 @@ linked_repo = "docker"
 webhook_enabled = false
 run_directory = "games/qlserver"
 config_files = [
-  { path = "common.cfg", requires = "None" }
-  { path = "qlserver.cfg", requires = "None" }
-  { path = "mappool.txt", requires = "None" }
-  { path = "workshop.txt", requires = "None" }
+  { path = "common.cfg", requires = "None" },
+  { path = "qlserver.cfg", requires = "None" },
+  { path = "mappool.txt", requires = "None" },
+  { path = "workshop.txt", requires = "None" },
   { path = "access.txt", requires = "None" }
 ]
 post_deploy.command = """

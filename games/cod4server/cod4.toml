@@ -7,7 +7,7 @@ linked_repo = "docker"
 webhook_enabled = false
 run_directory = "games/cod4server"
 config_files = [
-  { path = "common.cfg", requires = "None" }
+  { path = "common.cfg", requires = "None" },
   { path = "cod4server.cfg", requires = "None" }
 ]
 post_deploy.command = """

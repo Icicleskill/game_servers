@@ -7,8 +7,8 @@ linked_repo = "docker"
 webhook_enabled = false
 run_directory = "games/ut3server"
 config_files = [
-  { path = "common.cfg", requires = "None" }
-  { path = "UTGame.ini", requires = "None" }
+  { path = "common.cfg", requires = "None" },
+  { path = "UTGame.ini", requires = "None" },
   { path = "UTWeb.ini", requires = "None" }
 ]
 post_deploy.command = """

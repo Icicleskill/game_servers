@@ -7,7 +7,7 @@ linked_repo = "docker"
 webhook_enabled = false
 run_directory = "games/mcbserver"
 config_files = [
-  { path = "common.cfg", requires = "None" }
+  { path = "common.cfg", requires = "None" },
   { path = "server.properties", requires = "None" }
 ]
 post_deploy.command = """

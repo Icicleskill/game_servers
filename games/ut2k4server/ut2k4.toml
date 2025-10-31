@@ -7,7 +7,7 @@ linked_repo = "docker"
 webhook_enabled = false
 run_directory = "games/ut2k4server"
 config_files = [
-  { path = "common.cfg", requires = "None" }
+  { path = "common.cfg", requires = "None" },
   { path = "ut2k4server.ini", requires = "None" }
 ]
 post_deploy.command = """

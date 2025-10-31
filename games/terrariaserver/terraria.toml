@@ -7,7 +7,7 @@ linked_repo = "game_servers"
 webhook_enabled = false
 run_directory = "games/terrariaserver"
 config_files = [
-  { path = "common.cfg", requires = "None" }
+  { path = "common.cfg", requires = "None" },
   { path = "terrariaserver.txt", requires = "None" }
 ]
 post_deploy.command = """

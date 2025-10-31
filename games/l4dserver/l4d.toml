@@ -7,7 +7,7 @@ linked_repo = "docker"
 webhook_enabled = false
 run_directory = "games/l4dserver"
 config_files = [
-  { path = "common.cfg", requires = "None" }
+  { path = "common.cfg", requires = "None" },
   { path = "l4dserver.cfg", requires = "None" }
 ]
 post_deploy.command = """
