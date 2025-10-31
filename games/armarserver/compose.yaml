@@ -1,27 +1,35 @@
 services:
   lgsm:
-    image: gameservermanagers/gameserver:armar
-    container_name: armarserver
+    image: gameservermanagers/gameserver:${LGSM_SHORT}
+    container_name: ${CT_NAME}
+    hostname: ${CT_NAME}
     restart: unless-stopped
     networks:
-      - icenet
+      icemac:
+        ipv4_address: ${GAME_IP}
     volumes:
       - data:/data
     labels:
       - homepage.group=Games
-      - homepage.name=Arma Reforger
-      - homepage.icon=https://raw.githubusercontent.com/GameServerManagers/LinuxGSM/refs/heads/master/lgsm/data/gameicons/armar-icon.png
-      - homepage.href=steam://connect/armar.icicleskill.win:2001
+      - homepage.name=${CT_NAME}
+      - homepage.icon=https://raw.githubusercontent.com/GameServerManagers/LinuxGSM/refs/heads/master/lgsm/data/gameicons/${LGSM_SHORT}-icon.png
+      - homepage.href=steam://connect/${GAME_IP}:${GAME_PORT}
       - homepage.widget.type=gamedig
-      - homepage.widget.serverType=armareforger
-      - homepage.widget.url=udp://armarserver:17777
+      - homepage.widget.serverType=${GD_TYPE_ID}
+      - homepage.widget.url=udp://${GAME_IP}:${GAME_QUERY}
       - homepage.widget.fields=["status", "map", "currentPlayers", "ping"]
-      - homepage.container=armarserver
+      - homepage.container=${CT_NAME}
       - homepage.showStats=false
 volumes:
   data:
-    name: armarserver_data
+    name: ${CT_NAME}_data
 networks:
-  icenet:
-    driver: bridge
-    name: icenet
+  icemac:
+    name: icemac
+    driver: macvlan
+    driver_opts:
+      parent: ${IF_NAME}
+    ipam:
+      config:
+        - subnet: "${IF_SUBNET}"
+          gateway: "${IF_GATEWAY}"

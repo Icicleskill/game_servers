@@ -1,0 +1,35 @@
+services:
+  lgsm:
+    image: gameservermanagers/gameserver:${LGSM_SHORT}
+    container_name: ${CT_NAME}
+    hostname: ${CT_NAME}
+    restart: unless-stopped
+    networks:
+      icemac:
+        ipv4_address: ${GAME_IP}
+    volumes:
+      - data:/data
+    labels:
+      - homepage.group=Games
+      - homepage.name=${CT_NAME}
+      - homepage.icon=https://raw.githubusercontent.com/GameServerManagers/LinuxGSM/refs/heads/master/lgsm/data/gameicons/${LGSM_SHORT}-icon.png
+      - homepage.href=steam://connect/${GAME_IP}:${GAME_PORT}
+      - homepage.widget.type=gamedig
+      - homepage.widget.serverType=${GD_TYPE_ID}
+      - homepage.widget.url=udp://${GAME_IP}:${GAME_QUERY}
+      - homepage.widget.fields=["status", "map", "currentPlayers", "ping"]
+      - homepage.container=${CT_NAME}
+      - homepage.showStats=false
+volumes:
+  data:
+    name: ${CT_NAME}_data
+networks:
+  icemac:
+    name: icemac
+    driver: macvlan
+    driver_opts:
+      parent: ${IF_NAME}
+    ipam:
+      config:
+        - subnet: "${IF_SUBNET}"
+          gateway: "${IF_GATEWAY}"

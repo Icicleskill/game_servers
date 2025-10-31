@@ -1,34 +1,35 @@
 services:
   lgsm:
-    image: gameservermanagers/gameserver:cs2
-    container_name: cs2server
+    image: gameservermanagers/gameserver:${LGSM_SHORT}
+    container_name: ${CT_NAME}
+    hostname: ${CT_NAME}
     restart: unless-stopped
     networks:
-      llamamac:
-        ipv4_address: 192.168.50.59
+      icemac:
+        ipv4_address: ${GAME_IP}
     volumes:
       - data:/data
     labels:
       - homepage.group=Games
-      - homepage.name=Counter Strike 2
-      - homepage.icon=https://raw.githubusercontent.com/GameServerManagers/LinuxGSM/refs/heads/master/lgsm/data/gameicons/cs2-icon.png
-      - homepage.href=steam://connect/192.168.50.59:27015
+      - homepage.name=${CT_NAME}
+      - homepage.icon=https://raw.githubusercontent.com/GameServerManagers/LinuxGSM/refs/heads/master/lgsm/data/gameicons/${LGSM_SHORT}-icon.png
+      - homepage.href=steam://connect/${GAME_IP}:${GAME_PORT}
       - homepage.widget.type=gamedig
-      - homepage.widget.serverType=counterstrike2
-      - homepage.widget.url=udp://192.168.50.59:27015
+      - homepage.widget.serverType=${GD_TYPE_ID}
+      - homepage.widget.url=udp://${GAME_IP}:${GAME_QUERY}
       - homepage.widget.fields=["status", "map", "currentPlayers", "ping"]
-      - homepage.container=cs2server
+      - homepage.container=${CT_NAME}
       - homepage.showStats=false
 volumes:
   data:
-    name: cs2server_data
+    name: ${CT_NAME}_data
 networks:
-  llamamac:
-    name: llamamac
+  icemac:
+    name: icemac
     driver: macvlan
     driver_opts:
-      parent: enp6s18
+      parent: ${IF_NAME}
     ipam:
       config:
-        - subnet: "192.168.50.0/23"
-          gateway: "192.168.50.1"
+        - subnet: "${IF_SUBNET}"
+          gateway: "${IF_GATEWAY}"
