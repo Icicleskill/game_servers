@@ -1,14 +1,14 @@
 # Unreal Tournament Server
-#### [Linuxgsm](https://linuxgsm.com/servers/utserver/)
-  * Client Port - 7777
-  * Query Port - 7778
+#### [Linuxgsm](https://linuxgsm.com/servers/dayzserver/)
+  * Client Port - 2302
+  * Query Port -
   * RCON Port - 
   
-#### [LGSM Config](https://github.com/GameServerManagers/LinuxGSM/tree/master/lgsm/config-default/config-lgsm/utserver)
-  * config-lgsm/utserver/common.cfg
+#### [LGSM Config](https://github.com/GameServerManagers/LinuxGSM/tree/master/lgsm/config-default/config-lgsm/dayzserver)
+  * config-lgsm/dayzserver/common.cfg
 
-#### [Game Configs](https://github.com/GameServerManagers/Game-Server-Configs/tree/main/ut)
-  * serverfiles/LinuxServer/Engine/Binaries/Linux/Game.ini
+#### [Game Configs](https://github.com/GameServerManagers/Game-Server-Configs/tree/main/dayz)
+  * serverfiles/cfg/dayzserver.server.cfg
 
-#### [Icon](../icons/ut-icon.png)
-![](../icons/ut-icon.png)
+#### [Icon](../icons/dayz-icon.png)
+![](../icons/dayz-icon.png)
