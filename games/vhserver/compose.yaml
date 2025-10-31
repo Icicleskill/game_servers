@@ -5,7 +5,7 @@ services:
     hostname: ${CT_NAME}
     restart: unless-stopped
     networks:
-      lgsmac:
+      icemac:
         ipv4_address: ${GAME_IP}
     volumes:
       - data:/data
@@ -24,7 +24,7 @@ volumes:
   data:
     name: ${CT_NAME}_data
 networks:
-  lgsmac:
+  icemac:
     name: ${CT_NAME}_macvlan
     driver: macvlan
     driver_opts:
