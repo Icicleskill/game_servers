@@ -3,7 +3,7 @@ name = "quake_live"
 tags = ["ice", "games"]
 [stack.config]
 server = "darkmatter"
-linked_repo = "docker"
+linked_repo = "game_servers"
 webhook_enabled = false
 run_directory = "games/qlserver"
 config_files = [

@@ -2,8 +2,8 @@
 name = "killing_floor"
 tags = ["ice", "games"]
 [stack.config]
-server = "darkamtter"
-linked_repo = "docker"
+server = "darkmatter"
+linked_repo = "game_servers"
 webhook_enabled = false
 run_directory = "games/kfserver"
 config_files = [

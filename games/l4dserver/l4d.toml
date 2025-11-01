@@ -3,7 +3,7 @@ name = "left_4_dead"
 tags = ["ice", "games"]
 [stack.config]
 server = "darkmatter"
-linked_repo = "docker"
+linked_repo = "game_servers"
 webhook_enabled = false
 run_directory = "games/l4dserver"
 config_files = [

@@ -3,7 +3,7 @@ name = "unreal_tournament_2004"
 tags = ["ice", "games"]
 [stack.config]
 server = "darkmatter"
-linked_repo = "docker"
+linked_repo = "game_servers"
 webhook_enabled = false
 run_directory = "games/ut2k4server"
 config_files = [
